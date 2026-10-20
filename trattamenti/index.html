@@ -354,7 +354,7 @@
 /* pannello fisso a sinistra */
 .co-panel{position:sticky;top:120px;padding-top:34px}
 .co-panel__frame{position:relative;aspect-ratio:4/5;width:min(400px,calc((100vh - 400px) * .8),100%);margin-left:34px}
-.co-panel__rings{position:absolute;inset:-34px;width:calc(100% + 68px);height:calc(100% + 68px);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.co-panel__frame::before{content:"";position:absolute;inset:-14px;border:1px solid rgba(202,104,65,.35);border-radius:999px 999px 34px 34px;pointer-events:none}
 .co-panel__img{position:absolute;inset:0;border-radius:999px 999px 24px 24px;overflow:hidden;
   background:var(--img,none) center/cover no-repeat,linear-gradient(165deg,#E8D9E2 0%,#dcc7b6 55%,#c9a98f 100%);transition:opacity .4s}
 .co-panel__img.is-fading{opacity:.35}
@@ -486,6 +486,53 @@
 .co-tr button:focus-visible{outline:2px solid var(--co-verde);outline-offset:3px}
 .co-tr .co-panel__frame{width:clamp(260px,calc((100vh - 380px) * .8),380px);max-width:calc(100% - 68px)}
 @media (max-height:760px){.co-tr .co-panel{top:96px}.co-tr .co-panel__help{display:none}.co-tr .co-panel__name{margin-top:30px !important}}
+/* --- versione telefono --- */
+.co-moodbar{position:relative;z-index:5;margin-top:-16px}
+.co-t__thumb{display:none;width:56px;height:56px;border-radius:50%;place-items:center;background:var(--img,none) center/cover no-repeat,linear-gradient(160deg,#E8D9E2,#c9a98f);font-family:var(--co-serif);font-style:italic;font-size:18px;color:rgba(57,43,46,.55);transition:box-shadow .3s}
+.co-t__dl{display:none;font-family:var(--co-sans);font-style:normal;font-size:12px;color:rgba(57,43,46,.55);margin-left:8px;padding-left:8px;border-left:1px solid rgba(57,43,46,.2)}
+.co-help-m{display:none}
+@media (max-width:767px){
+  .co-tr .co-tr__big{font-size:170px;top:20px}
+  .co-tr .co-tr__intro{padding:44px 0 20px}
+  .co-tr .co-tr__intro h1{font-size:46px}
+  .co-tr .co-tr__intro p{font-size:16px;margin-top:16px !important}
+  .co-tr .co-moodbar{position:sticky;top:64px;margin-top:0;padding:12px 0 10px;background:rgba(242,239,228,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(57,43,46,.08)}
+  .co-tr .co-mood{margin-top:0;align-items:flex-start;gap:8px}
+  .co-tr .co-mood small{font-size:16px}
+  .co-tr .co-mood__list{-webkit-mask:linear-gradient(90deg,#000 80%,transparent);mask:linear-gradient(90deg,#000 80%,transparent);padding-bottom:2px}
+  .co-tr .co-mood__btn,.co-tr .co-mood__btn:hover,.co-tr .co-mood__btn:focus{height:40px;padding:0 16px;font-size:14px}
+  .co-tr .co-menu-tr{padding:24px 0 72px}
+  .co-tr .co-group + .co-group{margin-top:40px}
+  .co-tr .co-group__head{border-bottom:0;padding-bottom:12px;gap:12px}
+  .co-tr .co-group__head h2{font-size:26px}
+  .co-tr .co-t{border:0;background:var(--co-crema-2);border-radius:22px;margin-bottom:10px;transition:background .3s;scroll-margin-top:172px}
+  .co-tr .co-t.is-open{background:var(--co-malva)}
+  .co-tr .co-t__row,.co-tr .co-t__row:hover,.co-tr .co-t__row:focus,.co-tr .co-t__row:active{grid-template-columns:56px 1fr 32px;grid-template-rows:auto auto;column-gap:14px;row-gap:3px;padding:12px 14px 12px 12px;background:transparent}
+  .co-tr .co-t__n{display:none}
+  .co-tr .co-t__thumb{display:grid;grid-column:1;grid-row:1/3}
+  .co-tr .co-t.is-open .co-t__thumb{box-shadow:0 0 0 2px var(--co-crema-2),0 0 0 4px var(--co-terra)}
+  .co-tr .co-t__name{grid-column:2;grid-row:1;align-self:end}
+  .co-tr .co-t__name b{font-size:21px}
+  .co-tr .co-t__price{grid-column:2;grid-row:2;align-self:start;font-size:17px}
+  .co-tr .co-t__dl{display:inline}
+  .co-tr .co-t__plus{grid-column:3;grid-row:1/3;width:32px;height:32px;background:#fff;border-color:transparent}
+  .co-tr .co-t.is-open .co-t__plus{background:var(--co-terra);border-color:var(--co-terra);color:#fff}
+  .co-tr .co-t__box{margin:0;padding:2px 16px 18px;background:transparent;gap:14px}
+  .co-tr .co-t__box p{font-size:15px}
+  .co-tr .co-t__tags span{background:rgba(255,255,255,.75)}
+  .co-tr .co-t__book{gap:10px}
+  .co-tr .co-dur{width:100%;background:rgba(255,255,255,.7)}
+  .co-tr .co-dur button,.co-tr .co-dur button:hover,.co-tr .co-dur button:focus{flex:1;padding:0 8px}
+  .co-tr .co-dur button.is-on,.co-tr .co-dur button.is-on:hover{background:var(--co-bruno);color:#F2EFE4}
+  .co-tr .co-t__wa{width:100%;justify-content:center;height:52px}
+  .co-tr .co-help-m{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:28px;padding:20px 22px;border-radius:22px;background:var(--co-verde-scuro);color:#E9E4D6}
+  .co-tr .co-help-m b{display:block;font-family:var(--co-serif);font-weight:500;font-size:22px;color:#F2EFE4;margin-bottom:2px}
+  .co-tr .co-help-m span{font-size:14px}
+  .co-tr .co-help-m i{flex:none;width:44px;height:44px;border-radius:50%;background:var(--co-terra);color:#fff;display:grid;place-items:center;font-style:normal;font-size:20px}
+  .co-tr .co-duo-tr__head{margin-bottom:40px}
+  .co-tr .co-duo-tr h2{font-size:40px}
+  .co-tr .co-ticket h3{font-size:30px}
+}
 </style>
 
 <div class="co-tr" id="coTr">
@@ -498,6 +545,11 @@
       <h1>Il menu del <em>benessere</em></h1>
       <p>Quattordici modi per prenderti cura di te. Scegli come ti senti oggi: ti mostro i trattamenti pi&ugrave; adatti.</p>
 
+    </div>
+  </header>
+
+  <!-- FILTRO -->
+  <div class="co-moodbar"><div class="co-tw">
       <div class="co-mood" role="group" aria-label="Filtra i trattamenti">
         <small>Oggi ho bisogno di&hellip;</small>
         <div class="co-mood__list">
@@ -510,8 +562,7 @@
           <button class="co-mood__btn" type="button" data-mood="gravidanza"><i style="--dot:#F4A88A"></i>Gravidanza</button>
         </div>
       </div>
-    </div>
-  </header>
+  </div></div>
 
   <!-- ===== MENU ===== -->
   <section class="co-menu-tr">
@@ -520,11 +571,6 @@
       <!-- pannello (solo desktop) -->
       <aside class="co-panel" aria-hidden="true">
         <div class="co-panel__frame">
-          <svg class="co-panel__rings" viewBox="0 0 200 250" fill="none">
-            <rect x="2" y="2" width="196" height="246" rx="98" stroke="#EE9370" stroke-width=".7"/>
-            <rect x="9" y="9" width="182" height="232" rx="91" stroke="#C9472E" stroke-width=".7" stroke-dasharray="2 5"/>
-            <rect x="16" y="16" width="168" height="218" rx="84" stroke="#93D3B8" stroke-width=".7"/>
-          </svg>
           <div class="co-panel__img" id="coPanelImg"></div>
           <div class="co-panel__num" id="coPanelNum">01</div>
         </div>
@@ -675,6 +721,7 @@
         </div>
 
         <p class="co-empty" id="coEmpty">Nessun trattamento in questa categoria.</p>
+        <a class="co-help-m" href="https://wa.me/393272677850?text=Ciao!%20Mi%20aiuti%20a%20scegliere%20il%20trattamento%20giusto%3F" target="_blank" rel="noopener"><span><b>Non sai quale scegliere?</b>Scrivimi, ti consiglio io.</span><i>&rarr;</i></a>
       </div>
     </div>
   </section>
@@ -732,8 +779,7 @@
   var WA='https://wa.me/393272677850?text=';
   var items=[].slice.call(root.querySelectorAll('.co-t'));
   var pImg=document.getElementById('coPanelImg'), pNum=document.getElementById('coPanelNum'),
-      pName=document.getElementById('coPanelName'), pFor=document.getElementById('coPanelFor'),
-      rings=root.querySelector('.co-panel__rings'), turn=0;
+      pName=document.getElementById('coPanelName'), pFor=document.getElementById('coPanelFor');
 
   function waLink(it,dur){
     var msg='Ciao! Vorrei prenotare: '+it.dataset.name+(dur?' ('+dur+' min)':'');
@@ -756,8 +802,14 @@
     } else { box.remove(); }
     waLink(it, durs[0]||'');
 
-    // apertura riga
+    // miniatura e durate (visibili su telefono)
     var row=it.querySelector('.co-t__row');
+    var th=document.createElement('span'); th.className='co-t__thumb'; th.setAttribute('aria-hidden','true');
+    if(it.dataset.img){ th.style.setProperty('--img','url("'+it.dataset.img+'")'); } else { th.textContent=it.querySelector('.co-t__n').textContent; }
+    row.insertBefore(th,row.firstChild);
+    if(durs.length){ var dl=document.createElement('em'); dl.className='co-t__dl'; dl.textContent=durs.join(' / ')+' min'; row.querySelector('.co-t__price').appendChild(dl); }
+
+    // apertura riga
     row.addEventListener('click',function(){ toggle(it, !it.classList.contains('is-open')); });
     row.addEventListener('mouseenter',function(){ show(it); });
   });
@@ -780,7 +832,6 @@
     pNum.textContent=it.querySelector('.co-t__n').textContent;
     pName.innerHTML=(words.length?words.join(' ')+' ':'')+'<em>'+last+'</em>';
     pFor.innerHTML=it.dataset.for;
-    turn+=40; if(rings) rings.style.transform='rotate('+turn+'deg)';
   }
 
   // filtro "come ti senti"
