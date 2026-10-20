@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Trattamenti e prezzi | Cuore Olistico</title>
+</head>
+<body>
+<!-- ============================================================
+     CUORE OLISTICO &#183; HEADER + FOOTER (HTML + CSS + JS in un unico file)
+     Nessun font esterno: usa i font di sistema.
+     In Elementor: incollare la parte HEADER nel template Header e la parte FOOTER
+     nel template Footer (widget HTML). Lo <style> e lo <script> vanno messi una
+     sola volta (es. nel template Header).
+     Da completare: logo originale, link social, P.IVA, pagine privacy/cookie.
+     ============================================================ -->
+<style>
+.co-scope{
+    --co-crema:#F2EFE4; --co-crema-2:#F8F6EF; --co-malva:#E8D9E2; --co-salvia:#748B77;
+    --co-verde:#45846E; --co-verde-scuro:#2F4A3F; --co-terra:#CA6841; --co-terra-scuro:#B4552F;
+    --co-bruno:#392B2E; --co-serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif; --co-sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --co-top:38px; --co-bar:88px; --co-bar-small:70px;
+    font-family:var(--co-sans); color:var(--co-bruno); -webkit-font-smoothing:antialiased;
+  }
+  .co-scope *,.co-scope *::before,.co-scope *::after{box-sizing:border-box}
+  .co-scope a{color:inherit;text-decoration:none}
+  .co-scope svg{display:block}
+  /* ---------- struttura fissa ---------- */
+  .co-h{position:fixed;inset:0 0 auto 0;z-index:999}
+  .co-h-spacer{height:calc(var(--co-top) + var(--co-bar))}
+  /* ---------- barra superiore ---------- */
+  .co-top{height:var(--co-top);background:var(--co-verde-scuro);color:#EDE7DA;font-size:13px;letter-spacing:.02em;
+    overflow:hidden;transition:height .35s ease,opacity .25s ease}
+  .co-top__in{max-width:1280px;height:100%;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .co-top__item{display:flex;align-items:center;gap:8px;white-space:nowrap}
+  .co-top__item svg{width:14px;height:14px;opacity:.75}
+  .co-top__item a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+  .co-top__dot{width:6px;height:6px;border-radius:50%;background:#9FD8BF;box-shadow:0 0 0 4px rgba(159,216,191,.18)}
+  .co-top__right{display:flex;gap:28px}
+  /* ---------- barra principale ---------- */
+  .co-bar{height:var(--co-bar);background:rgba(242,239,228,.88);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid rgba(57,43,46,.07);transition:height .35s ease,box-shadow .35s ease,background .35s ease}
+  .co-bar__in{max-width:1280px;height:100%;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
+  .co-nav{display:flex;align-items:center;gap:34px}
+  .co-nav--r{justify-content:flex-end;gap:22px}
+  .co-link{position:relative;font-size:15px;font-weight:500;letter-spacing:.01em;padding:8px 0;color:var(--co-bruno);transition:color .25s}
+  .co-link::after{content:"";position:absolute;left:50%;bottom:-2px;width:5px;height:5px;border-radius:50%;background:var(--co-terra);
+    transform:translateX(-50%) scale(0);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+  .co-link:hover,.co-link.is-active{color:var(--co-verde)}
+  .co-link:hover::after,.co-link.is-active::after{transform:translateX(-50%) scale(1)}
+  /* logo */
+  .co-logo{display:flex;flex-direction:column;align-items:center;gap:4px;line-height:1}
+  .co-logo__txt{display:flex;flex-direction:column;align-items:center;gap:5px}
+  .co-logo__mark{width:46px;height:46px;transition:width .35s,height .35s,transform .6s ease}
+  .co-logo:hover .co-logo__mark{transform:rotate(-8deg) scale(1.04)}
+  .co-logo__name{font-family:var(--co-sans);font-weight:600;font-size:15px;letter-spacing:.2em;color:var(--co-verde);text-transform:uppercase}
+  .co-logo__sub{font-family:var(--co-serif);font-style:italic;font-size:13px;letter-spacing:.32em;color:var(--co-salvia)}
+  /* pulsanti */
+  .co-ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(69,132,110,.35);color:var(--co-verde);
+    transition:background .25s,color .25s,border-color .25s}
+  .co-ico svg{width:18px;height:18px}
+  .co-ico:hover{background:var(--co-verde);border-color:var(--co-verde);color:#fff}
+  .co-btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px 0 18px;border-radius:999px;background:var(--co-terra);color:#fff !important;
+    font-weight:600;font-size:15px;letter-spacing:.01em;box-shadow:0 8px 22px -10px rgba(202,104,65,.75);transition:background .25s,transform .25s,box-shadow .25s}
+  .co-btn svg{width:20px;height:20px}
+  .co-btn:hover{background:var(--co-terra-scuro);transform:translateY(-2px);box-shadow:0 14px 26px -12px rgba(180,85,47,.8)}
+  /* burger */
+  .co-burger{display:none;width:48px;height:48px;border:0;border-radius:50%;background:var(--co-malva);cursor:pointer;position:relative}
+  .co-burger span{position:absolute;left:14px;right:14px;height:2px;border-radius:2px;background:var(--co-bruno);transition:transform .35s,opacity .2s,top .35s}
+  .co-burger span:nth-child(1){top:18px}.co-burger span:nth-child(2){top:23px;right:20px}.co-burger span:nth-child(3){top:28px}
+  /* ---------- stato "scrollato" ---------- */
+  .co-h.is-scrolled .co-top{height:0;opacity:0}
+  .co-h.is-scrolled .co-bar{height:var(--co-bar-small);background:rgba(242,239,228,.96);box-shadow:0 10px 30px -18px rgba(57,43,46,.35)}
+  .co-h.is-scrolled .co-logo__mark{width:36px;height:36px}
+  /* ---------- menu mobile ---------- */
+  .co-menu{position:fixed;inset:0;z-index:998;background:var(--co-crema);padding:calc(var(--co-bar-small) + 36px) 28px 120px;
+    display:flex;flex-direction:column;gap:36px;overflow:auto;opacity:0;visibility:hidden;transform:translateY(-12px);
+    transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s .45s}
+  .co-menu.is-open{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+  .co-menu__rings{position:absolute;right:-120px;bottom:-120px;width:380px;height:380px;opacity:.5;pointer-events:none}
+  .co-menu__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;position:relative}
+  .co-menu__list a{display:flex;align-items:baseline;gap:16px;font-family:var(--co-serif);font-weight:500;font-size:clamp(34px,9vw,46px);line-height:1.15;color:var(--co-bruno)}
+  .co-menu__list a small{font-family:var(--co-sans);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--co-terra)}
+  .co-menu__list a:hover em{color:var(--co-verde)}
+  .co-menu__list em{font-style:italic}
+  .co-menu__info{position:relative;border-top:1px solid rgba(57,43,46,.12);padding-top:24px;display:grid;gap:10px;font-size:15px;line-height:1.5}
+  .co-menu__info strong{font-family:var(--co-serif);font-size:20px;font-weight:600;color:var(--co-verde)}
+  .co-menu .co-btn{align-self:flex-start}
+  /* ---------- barra azioni fissa (solo mobile) ---------- */
+  .co-dock{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:1000;padding:8px;border-radius:999px;
+    background:rgba(47,74,63,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 16px 40px -14px rgba(0,0,0,.45);
+    grid-template-columns:1fr 1.4fr;gap:8px;transform:translateY(140%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+  .co-dock.is-visible{transform:none}
+  .co-dock a{height:50px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;color:#fff}
+  .co-dock a svg{width:19px;height:19px}
+  .co-dock__call{background:rgba(255,255,255,.1)}
+  .co-dock__wa{background:var(--co-terra)}
+  /* ---------- responsive ---------- */
+  @media (max-width:1100px){
+    .co-bar__in{grid-template-columns:auto 1fr auto}
+    .co-nav--l,.co-nav--r .co-link{display:none}
+    .co-logo{flex-direction:row;gap:12px;grid-column:1}
+    .co-logo__txt{align-items:flex-start}
+    .co-nav--r{grid-column:3}
+    .co-burger{display:block}
+  }
+  @media (max-width:767px){
+    .co-scope{--co-bar:72px;--co-bar-small:64px}
+    .co-top{display:none}
+    .co-h-spacer{height:var(--co-bar)}
+    .co-bar__in{padding:0 16px}
+    .co-nav--r .co-ico,.co-nav--r .co-btn{display:none}
+    .co-logo__mark{width:40px;height:40px}
+    .co-logo__name{font-size:13px;letter-spacing:.16em}
+    .co-logo__sub{font-size:12px}
+    .co-dock{display:grid}
+  }
+  @media (min-width:768px){ .co-menu{padding-left:48px;padding-right:48px} }
+  @media (prefers-reduced-motion:reduce){ .co-scope *{transition:none !important} }
+  body.co-lock{overflow:hidden}
+  body.co-lock .co-dock{transform:translateY(140%)}
+  .co-burger.is-open span:nth-child(1){top:23px;transform:rotate(45deg)}
+  .co-burger.is-open span:nth-child(2){opacity:0}
+  .co-burger.is-open span:nth-child(3){top:23px;transform:rotate(-45deg)}
+  .co-f{
+    --co-crema:#F2EFE4; --co-malva:#E8D9E2; --co-salvia:#748B77; --co-verde:#45846E; --co-verde-scuro:#2F4A3F;
+    --co-terra:#CA6841; --co-terra-scuro:#B4552F; --co-bruno:#392B2E;
+    --co-serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif; --co-sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-family:var(--co-sans); color:var(--co-bruno); -webkit-font-smoothing:antialiased; position:relative;
+  }
+  .co-f *,.co-f *::before,.co-f *::after{box-sizing:border-box}
+  .co-f a{color:inherit;text-decoration:none}
+  .co-f svg{display:block}
+  /* ---------- invito finale ---------- */
+  .co-f__cta{background:var(--co-malva);padding:110px 32px 170px;position:relative;overflow:hidden}
+  .co-f__cta-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;position:relative;z-index:1}
+  .co-f__eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--co-verde)}
+  .co-f__eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+  .co-f__title{font-family:var(--co-serif);font-weight:500;font-size:clamp(40px,5.6vw,76px);line-height:1.02;letter-spacing:-.01em;margin:18px 0 0;color:var(--co-bruno)}
+  .co-f__title em{font-style:italic;color:var(--co-verde)}
+  .co-f__lead{font-size:17px;line-height:1.65;max-width:440px;margin:0 0 30px;color:rgba(57,43,46,.82)}
+  .co-f__actions{display:flex;flex-wrap:wrap;gap:12px}
+  .co-f__btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 26px 0 22px;border-radius:999px;font-weight:600;font-size:16px;
+    transition:background .25s,transform .25s,box-shadow .25s,color .25s}
+  .co-f__btn svg{width:20px;height:20px}
+  .co-f__btn--wa{background:var(--co-terra);color:#fff !important;box-shadow:0 10px 26px -12px rgba(202,104,65,.8)}
+  .co-f__btn--wa:hover{background:var(--co-terra-scuro);transform:translateY(-2px)}
+  .co-f__btn--tel{border:1.5px solid rgba(57,43,46,.25);color:var(--co-bruno)}
+  .co-f__btn--tel:hover{border-color:var(--co-verde);color:var(--co-verde)}
+  .co-f__rings{position:absolute;right:-140px;top:50%;width:620px;height:620px;transform:translateY(-55%);opacity:.55;pointer-events:none;
+    animation:coBreath 9s ease-in-out infinite}
+  @keyframes coBreath{50%{transform:translateY(-55%) scale(1.05)}}
+  /* ---------- corpo del footer ---------- */
+  .co-f__main{background:var(--co-verde-scuro);color:#E9E4D6;border-radius:44px 44px 0 0;margin-top:-80px;position:relative;z-index:2;overflow:hidden;
+    padding:80px 32px 0}
+  .co-f__grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+  .co-f__brand{display:flex;flex-direction:column;gap:22px}
+  .co-f__logo{display:flex;align-items:center;gap:14px}
+  .co-f__logo svg{width:52px;height:52px}
+  .co-f__logo b{display:block;font-weight:600;font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+  .co-f__logo i{display:block;margin-top:5px;font-family:var(--co-serif);font-size:14px;letter-spacing:.32em;color:#B9CDBB}
+  .co-f__quote{font-family:var(--co-serif);font-style:italic;font-size:24px;line-height:1.3;color:#F2EFE4;margin:0;max-width:330px}
+  .co-f__social{display:flex;gap:10px}
+  .co-f__social a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(233,228,214,.25);transition:background .25s,border-color .25s,color .25s}
+  .co-f__social a:hover{background:#E9E4D6;border-color:#E9E4D6;color:var(--co-verde-scuro)}
+  .co-f__social svg{width:18px;height:18px}
+  .co-f__col h3{font-family:var(--co-sans);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#9FD8BF;margin:8px 0 22px}
+  .co-f__col ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:15px}
+  .co-f__col a{position:relative;transition:color .2s}
+  .co-f__col a:hover{color:#fff}
+  .co-f__col li a::before{content:"";position:absolute;left:-14px;top:50%;width:5px;height:5px;margin-top:-2px;border-radius:50%;background:var(--co-terra);
+    opacity:0;transform:scale(0);transition:.25s}
+  .co-f__col li a:hover::before{opacity:1;transform:scale(1)}
+  .co-f__info{display:grid;gap:18px;font-size:15px;line-height:1.55}
+  .co-f__info small{display:block;font-size:12px;letter-spacing:.06em;color:#9DB3A2;margin-bottom:2px}
+  .co-f__info a{border-bottom:1px solid rgba(233,228,214,.25);padding-bottom:1px}
+  .co-f__info a:hover{border-color:#fff}
+  .co-f__badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(159,216,191,.12);color:#CFEBDD;font-size:13px;width:max-content}
+  .co-f__badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#9FD8BF}
+  /* scritta gigante decorativa */
+  .co-f__word{max-width:1280px;margin:70px auto 0;font-family:var(--co-serif);font-weight:500;font-style:italic;white-space:nowrap;
+    font-size:clamp(44px,13.5vw,196px);line-height:.8;letter-spacing:-.02em;text-align:center;
+    color:transparent;-webkit-text-stroke:1px rgba(233,228,214,.22);user-select:none;transform:translateY(12%)}
+  .co-f__bottom{background:#263D33;position:relative;z-index:2}
+  .co-f__bottom-in{max-width:1280px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center;
+    font-size:13px;color:#A9BBAE}
+  .co-f__legal{display:flex;flex-wrap:wrap;gap:8px 22px}
+  .co-f__legal a:hover,.co-f__credit a:hover{color:#fff}
+  .co-f__credit a{color:#E9E4D6}
+  /* ---------- responsive ---------- */
+  @media (max-width:1024px){
+    .co-f__cta-in{grid-template-columns:1fr;gap:24px}
+    .co-f__grid{grid-template-columns:1fr 1fr;gap:44px 32px}
+    .co-f__brand{grid-column:1/-1}
+  }
+  @media (max-width:767px){
+    .co-f__cta{padding:72px 16px 140px}
+    .co-f__rings{width:380px;height:380px;right:-170px;top:20%}
+    .co-f__actions{flex-direction:column}
+    .co-f__btn{justify-content:center}
+    .co-f__main{padding:60px 16px 0;border-radius:32px 32px 0 0}
+    .co-f__grid{grid-template-columns:1fr;gap:38px}
+    .co-f__col li a::before{display:none}
+    .co-f__word{margin-top:50px}
+    .co-f__bottom-in{padding:20px 16px 96px;flex-direction:column;align-items:flex-start}  /* 96px: spazio per la barra azioni mobile */
+  }
+  @media (prefers-reduced-motion:reduce){ .co-f__rings{animation:none} }
+/* --- correzione: stili pulsante del tema --- */
+.co-scope .co-burger,.co-scope .co-burger:hover,.co-scope .co-burger:focus{background:var(--co-malva);border:0;border-radius:50%;padding:0;color:var(--co-bruno);box-shadow:none}
+.co-scope .co-burger:hover{background:#DFC9D6}
+.co-scope .co-burger:focus{outline:none}
+.co-scope .co-burger:focus-visible{outline:2px solid var(--co-verde);outline-offset:3px}
+  /* contenuto di esempio tra header e footer: eliminare in WordPress */
+  body{margin:0}
+  .co-demo{min-height:70vh;display:grid;place-items:center;background:#F2EFE4;color:#8a7c78;font:15px system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}
+</style>
+
+<!-- ======================= HEADER ======================= -->
+<div class="co-scope">
+  <header class="co-h" id="coHeader">
+    <!-- barra superiore -->
+    <div class="co-top">
+      <div class="co-top__in">
+        <span class="co-top__item"><span class="co-top__dot" aria-hidden="true"></span>Ricevo solo su appuntamento</span>
+        <div class="co-top__right">
+          <a class="co-top__item" href="https://www.google.com/maps/search/?api=1&query=Via+Immacolata+di+Lourdes+29%2FA+31015+Conegliano+TV" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 1 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            Via Immacolata di Lourdes 29/A, Conegliano
+          </a>
+          <a class="co-top__item" href="tel:+393272677850">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+            366 414 9205
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- barra principale -->
+    <div class="co-bar">
+      <div class="co-bar__in">
+        <nav class="co-nav co-nav--l" aria-label="Menu principale">
+          <a class="co-link" href="../trattamenti/">Trattamenti</a>
+          <a class="co-link" href="../trattamenti/#coppia-pacchetti">Coppia &amp; pacchetti</a>
+          <a class="co-link" href="../#chi-sono">Chi sono</a>
+        </nav>
+
+        <a class="co-logo" href="../" aria-label="Cuore Olistico, torna alla home">
+          <!-- LOGO SEGNAPOSTO: sostituire con il file originale -->
+          <svg class="co-logo__mark" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" fill="#EE9370"/>
+            <circle cx="24" cy="24" r="17.5" fill="#C9472E"/>
+            <circle cx="24" cy="24" r="13" fill="#F4A88A"/>
+            <circle cx="24" cy="24" r="8.5" fill="#93D3B8"/>
+          </svg>
+          <span class="co-logo__txt">
+            <span class="co-logo__name">Cuore Olistico</span>
+            <span class="co-logo__sub">studio olistico</span>
+          </span>
+        </a>
+
+        <div class="co-nav co-nav--r">
+          <a class="co-link" href="../contatti/">Contatti</a>
+          <a class="co-ico" href="tel:+393272677850" aria-label="Chiama 366 414 9205" title="Chiama">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+          </a>
+          <a class="co-btn" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio%20%F0%9F%8C%BF" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+            Prenota su WhatsApp
+          </a>
+          <button class="co-burger" id="coBurger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="coMenu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="co-h-spacer" aria-hidden="true"></div>
+
+  <!-- menu mobile a tutto schermo -->
+  <div class="co-menu" id="coMenu" aria-hidden="true">
+    <svg class="co-menu__rings" viewBox="0 0 200 200" aria-hidden="true" fill="none">
+      <circle cx="100" cy="100" r="96" stroke="#EE9370" stroke-width="1.2"/><circle cx="100" cy="100" r="76" stroke="#C9472E" stroke-width="1.2"/>
+      <circle cx="100" cy="100" r="56" stroke="#F4A88A" stroke-width="1.2"/><circle cx="100" cy="100" r="36" stroke="#93D3B8" stroke-width="1.2"/>
+    </svg>
+    <ul class="co-menu__list">
+      <li><a href="../"><small>01</small><em>Home</em></a></li>
+      <li><a href="../trattamenti/"><small>02</small><em>Trattamenti</em></a></li>
+      <li><a href="../trattamenti/#coppia-pacchetti"><small>03</small><em>Coppia &amp; pacchetti</em></a></li>
+      <li><a href="../#chi-sono"><small>04</small><em>Chi sono</em></a></li>
+      <li><a href="../contatti/"><small>05</small><em>Contatti</em></a></li>
+    </ul>
+    <div class="co-menu__info">
+      <strong>La tua piccola oasi di pace</strong>
+      <span>Via Immacolata di Lourdes 29/A, Conegliano (TV)</span>
+      <a href="tel:+393272677850">Tel. 366 414 9205</a>
+      <span>Ricevo solo su appuntamento</span>
+    </div>
+    <a class="co-btn" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio%20%F0%9F%8C%BF" target="_blank" rel="noopener">Prenota su WhatsApp</a>
+  </div>
+
+  <!-- barra azioni fissa, solo smartphone -->
+  <div class="co-dock" id="coDock">
+    <a class="co-dock__call" href="tel:+393272677850">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Chiama
+    </a>
+    <a class="co-dock__wa" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio%20%F0%9F%8C%BF" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>Prenota ora
+    </a>
+  </div>
+</div>
+
+<!-- ======================= CONTENUTO PAGINA (esempio) ======================= -->
+<style>
+.co-tr{
+  --co-crema:#F2EFE4; --co-crema-2:#F8F6EF; --co-malva:#E8D9E2; --co-salvia:#748B77;
+  --co-verde:#45846E; --co-verde-scuro:#2F4A3F; --co-terra:#CA6841; --co-terra-scuro:#B4552F; --co-bruno:#392B2E;
+  --co-serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --co-sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  font-family:var(--co-sans); color:var(--co-bruno); background:var(--co-crema); -webkit-font-smoothing:antialiased; overflow:clip;
+}
+.co-tr *,.co-tr *::before,.co-tr *::after{box-sizing:border-box}
+.co-tr a{color:inherit;text-decoration:none}
+.co-tr svg{display:block}
+.co-tr h1,.co-tr h2,.co-tr h3{font-family:var(--co-serif);font-weight:500;margin:0;letter-spacing:-.01em;color:var(--co-bruno)}
+.co-tr p{margin:0}
+.co-tr button{font:inherit;color:inherit;cursor:pointer}
+.co-tw{max-width:1280px;margin:0 auto;padding:0 32px}
+.co-tey{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--co-verde)}
+.co-tey::before{content:"";width:28px;height:1px;background:currentColor}
+
+/* ---------- INTESTAZIONE ---------- */
+.co-tr__intro{position:relative;padding:80px 0 56px;text-align:center}
+.co-tr__big{position:absolute;left:50%;top:10px;transform:translateX(-50%);font-family:var(--co-serif);font-style:italic;font-size:clamp(200px,30vw,420px);line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(202,104,65,.22);pointer-events:none;user-select:none}
+.co-tr__intro h1{position:relative;font-size:clamp(48px,7vw,104px);line-height:.95;margin-top:22px}
+.co-tr__intro h1 em{font-style:italic;color:var(--co-verde)}
+.co-tr__intro p{position:relative;max-width:560px;margin:24px auto 0 !important;font-size:18px;line-height:1.65;color:rgba(57,43,46,.8)}
+
+/* filtro "come ti senti" */
+.co-mood{position:relative;margin-top:44px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.co-mood small{font-family:var(--co-serif);font-style:italic;font-size:20px;color:var(--co-salvia)}
+.co-mood__list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.co-mood__btn{display:inline-flex;align-items:center;gap:9px;height:46px;padding:0 20px;border-radius:999px;border:1.5px solid rgba(57,43,46,.16);background:transparent;font-size:15px;font-weight:500;transition:background .25s,border-color .25s,color .25s}
+.co-mood__btn i{width:9px;height:9px;border-radius:50%;background:var(--dot,#748B77)}
+.co-mood__btn:hover{border-color:var(--co-verde)}
+.co-mood__btn.is-on{background:var(--co-bruno);border-color:var(--co-bruno);color:#F2EFE4}
+
+/* ---------- MENU ---------- */
+.co-menu-tr{padding:40px 0 120px}
+.co-menu-tr__grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:72px;align-items:start}
+
+/* pannello fisso a sinistra */
+.co-panel{position:sticky;top:120px;padding-top:34px}
+.co-panel__frame{position:relative;aspect-ratio:4/5;width:min(400px,calc((100vh - 400px) * .8),100%);margin-left:34px}
+.co-panel__rings{position:absolute;inset:-34px;width:calc(100% + 68px);height:calc(100% + 68px);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.co-panel__img{position:absolute;inset:0;border-radius:999px 999px 24px 24px;overflow:hidden;
+  background:var(--img,none) center/cover no-repeat,linear-gradient(165deg,#E8D9E2 0%,#dcc7b6 55%,#c9a98f 100%);transition:opacity .4s}
+.co-panel__img.is-fading{opacity:.35}
+.co-panel__num{position:absolute;left:-18px;bottom:28px;width:84px;height:84px;border-radius:50%;background:var(--co-terra);color:#fff;display:grid;place-items:center;
+  font-family:var(--co-serif);font-style:italic;font-size:30px;box-shadow:0 18px 30px -16px rgba(202,104,65,.9)}
+.co-panel__name{font-size:clamp(30px,3vw,42px);margin-top:44px !important;line-height:1.05}
+.co-panel__name em{font-style:italic;color:var(--co-verde)}
+.co-panel__for{margin-top:12px !important;font-size:16px;line-height:1.6;color:rgba(57,43,46,.75);max-width:420px}
+.co-panel__help{margin-top:28px;display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:20px;background:var(--co-crema-2);max-width:440px;font-size:14px;line-height:1.5}
+.co-panel__help svg{width:22px;height:22px;flex:none;color:var(--co-verde)}
+.co-panel__help a{color:var(--co-verde);font-weight:600;border-bottom:1px solid currentColor}
+
+/* gruppi */
+.co-group + .co-group{margin-top:72px}
+.co-group__head{display:flex;align-items:baseline;gap:18px;padding-bottom:18px;border-bottom:1.5px solid var(--co-bruno)}
+.co-group__head span{font-family:var(--co-serif);font-style:italic;font-size:22px;color:var(--co-terra)}
+.co-group__head h2{font-size:clamp(26px,2.6vw,34px)}
+.co-group__head small{margin-left:auto;font-size:13px;color:rgba(57,43,46,.6)}
+
+/* righe trattamento */
+.co-t{border-bottom:1px solid rgba(57,43,46,.12);scroll-margin-top:140px;transition:opacity .35s}
+.co-t.is-hidden{display:none}
+.co-t__row{width:100%;display:grid;grid-template-columns:44px 1fr auto 28px;align-items:center;gap:14px;padding:24px 4px;background:none;border:0;text-align:left}
+.co-t__n{font-size:12px;font-weight:600;letter-spacing:.12em;color:rgba(57,43,46,.45)}
+.co-t__name{display:flex;align-items:baseline;gap:12px;min-width:0}
+.co-t__name b{font-family:var(--co-serif);font-weight:500;font-size:clamp(23px,2.2vw,30px);line-height:1.15;transition:color .25s,letter-spacing .35s}
+.co-t__name i{flex:1;min-width:20px;height:1px;border-bottom:1.5px dotted rgba(57,43,46,.3);transform:translateY(-6px)}
+.co-t__price{font-family:var(--co-serif);font-size:22px;white-space:nowrap}
+.co-t__price small{font-family:var(--co-sans);font-size:12px;color:rgba(57,43,46,.55);margin-right:3px}
+.co-t__plus{width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(57,43,46,.25);position:relative;transition:transform .35s,background .25s,border-color .25s}
+.co-t__plus::before,.co-t__plus::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:1.5px;background:currentColor;transform:translate(-50%,-50%)}
+.co-t__plus::after{transform:translate(-50%,-50%) rotate(90deg)}
+.co-t__row:hover b{color:var(--co-verde)}
+.co-t.is-open .co-t__name b{font-style:italic;color:var(--co-verde)}
+.co-t.is-open .co-t__plus{transform:rotate(45deg);background:var(--co-terra);border-color:var(--co-terra);color:#fff}
+.co-t.is-open .co-t__n{color:var(--co-terra)}
+
+.co-t__more{display:grid;grid-template-rows:1fr;transition:grid-template-rows .45s cubic-bezier(.2,.8,.2,1)}
+.co-tjs .co-t__more{grid-template-rows:0fr}
+.co-tjs .co-t.is-open .co-t__more{grid-template-rows:1fr}
+.co-t__inner{overflow:hidden}
+.co-t__box{margin:0 0 26px 58px;padding:26px 28px;border-radius:22px;background:var(--co-malva);display:grid;gap:18px}
+.co-t__box p{font-size:16px;line-height:1.65}
+.co-t__tags{display:flex;flex-wrap:wrap;gap:8px;font-size:13px}
+.co-t__tags span{padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.6)}
+.co-t__tags span::before{content:"\2713\00a0";color:var(--co-verde)}
+.co-t__book{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding-top:6px}
+.co-t__book > small{width:100%;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(57,43,46,.6)}
+.co-dur{display:flex;gap:6px;background:rgba(255,255,255,.55);padding:5px;border-radius:999px}
+.co-dur button{height:38px;padding:0 16px;border-radius:999px;border:0;background:transparent;font-size:14px;font-weight:600;transition:background .25s,color .25s}
+.co-dur button.is-on{background:var(--co-bruno);color:#F2EFE4}
+.co-t__wa{display:inline-flex;align-items:center;gap:9px;height:48px;padding:0 22px;border-radius:999px;background:var(--co-terra);color:#fff !important;font-weight:600;font-size:15px;transition:background .25s,transform .25s}
+.co-t__wa:hover{background:var(--co-terra-scuro);transform:translateY(-2px)}
+.co-t__wa svg{width:18px;height:18px}
+
+.co-empty{display:none;padding:40px 0;text-align:center;font-family:var(--co-serif);font-style:italic;font-size:22px;color:var(--co-salvia)}
+
+/* ---------- COPPIA E PACCHETTI: biglietti ---------- */
+.co-duo-tr{background:var(--co-verde-scuro);color:#E9E4D6;padding:110px 0 130px;border-radius:48px 48px 0 0;scroll-margin-top:110px;position:relative;overflow:hidden}
+.co-duo-tr__rings{position:absolute;right:-220px;top:-220px;width:620px;height:620px;opacity:.25;pointer-events:none}
+.co-duo-tr__head{text-align:center;max-width:640px;margin:0 auto 64px;position:relative}
+.co-duo-tr .co-tey{color:#9FD8BF}
+.co-duo-tr h2{color:#F2EFE4;font-size:clamp(40px,5vw,68px);line-height:1.02;margin-top:18px}
+.co-duo-tr h2 em{font-style:italic;color:#F4A88A}
+.co-duo-tr__head p{margin-top:20px !important;font-size:17px;line-height:1.7;color:#C9D6CB}
+.co-tickets{display:grid;grid-template-columns:1fr 1fr;gap:32px;position:relative}
+.co-ticket{--bg:#F2EFE4;position:relative;display:grid;grid-template-columns:1fr 150px;color:var(--co-bruno);filter:drop-shadow(0 30px 40px rgba(0,0,0,.25));transition:transform .4s}
+.co-ticket:hover{transform:translateY(-6px) rotate(-.6deg)}
+.co-ticket:nth-child(2):hover{transform:translateY(-6px) rotate(.6deg)}
+.co-ticket__main,.co-ticket__stub{background:var(--bg)}
+.co-ticket__main{border-radius:26px 0 0 26px;padding:38px 34px;display:flex;flex-direction:column;gap:16px;
+  -webkit-mask:radial-gradient(circle 14px at 100% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+          mask:radial-gradient(circle 14px at 100% 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+.co-ticket__stub{border-radius:0 26px 26px 0;border-left:2px dashed rgba(57,43,46,.2);padding:30px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;
+  -webkit-mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 0 100%,#0000 98%,#000) bottom/100% 51% no-repeat;
+          mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) top/100% 51% no-repeat,radial-gradient(circle 14px at 0 100%,#0000 98%,#000) bottom/100% 51% no-repeat}
+.co-ticket__kicker{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--co-terra)}
+.co-ticket h3{font-size:36px;line-height:1.05}
+.co-ticket h3 em{font-style:italic;color:var(--co-verde)}
+.co-ticket p{font-size:15px;line-height:1.65;color:rgba(57,43,46,.8)}
+.co-ticket__chips{display:flex;flex-wrap:wrap;gap:6px}
+.co-ticket__chips span{font-size:13px;padding:5px 12px;border-radius:999px;background:var(--co-malva)}
+.co-ticket__stub svg{width:58px;height:58px;margin-bottom:8px}
+.co-ticket__stub b{font-family:var(--co-serif);font-weight:500;font-style:italic;font-size:22px;line-height:1.1}
+.co-ticket__stub a{margin-top:12px;display:inline-flex;align-items:center;justify-content:center;width:100%;height:44px;border-radius:999px;background:var(--co-terra);color:#fff !important;font-size:14px;font-weight:600;transition:background .25s}
+.co-ticket__stub a:hover{background:var(--co-terra-scuro)}
+.co-ticket--malva{--bg:#E8D9E2}
+.co-ticket--malva .co-ticket__chips span{background:rgba(255,255,255,.6)}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1024px){
+  .co-menu-tr__grid{grid-template-columns:1fr}
+  .co-panel{display:none}
+  .co-tickets{grid-template-columns:1fr;max-width:620px;margin:0 auto}
+}
+@media (max-width:767px){
+  .co-tw{padding:0 16px}
+  .co-tr__intro{padding:48px 0 32px}
+  .co-mood__list{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;width:calc(100% + 32px);margin:0 -16px;padding:2px 16px 8px;scrollbar-width:none}
+  .co-mood__list::-webkit-scrollbar{display:none}
+  .co-mood__btn{flex:none}
+  .co-group__head small{display:none}
+  .co-t__row{grid-template-columns:30px 1fr 28px;row-gap:4px;padding:20px 0}
+  .co-t__name i{display:none}
+  .co-t__price{grid-column:2;grid-row:2;font-size:18px}
+  .co-t__plus{grid-column:3;grid-row:1/3}
+  .co-t__box{margin:0 0 22px;padding:22px 18px}
+  .co-t__wa{width:100%;justify-content:center}
+  .co-duo-tr{padding:80px 0 100px;border-radius:32px 32px 0 0}
+  .co-ticket{grid-template-columns:1fr}
+  .co-ticket__main{border-radius:26px 26px 0 0;padding:30px 24px;
+    -webkit-mask:radial-gradient(circle 14px at 0 100%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) right/51% 100% no-repeat;
+            mask:radial-gradient(circle 14px at 0 100%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) right/51% 100% no-repeat}
+  .co-ticket__stub{border-radius:0 0 26px 26px;border-left:0;border-top:2px dashed rgba(57,43,46,.2);flex-direction:row;flex-wrap:wrap;padding:20px 24px 24px;
+    -webkit-mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 0,#0000 98%,#000) right/51% 100% no-repeat;
+            mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 14px at 100% 0,#0000 98%,#000) right/51% 100% no-repeat}
+  .co-ticket__stub svg{width:40px;height:40px;margin:0}
+}
+@media (prefers-reduced-motion:reduce){ .co-tr *{transition:none !important} }
+/* --- correzioni: stili pulsante del tema + pannello --- */
+.co-tr .co-t__row,.co-tr .co-t__row:hover,.co-tr .co-t__row:focus,.co-tr .co-t__row:active{background:transparent;color:var(--co-bruno);border:0;border-radius:0;box-shadow:none;white-space:normal;font-size:inherit;text-transform:none}
+.co-tr .co-mood__btn,.co-tr .co-mood__btn:hover,.co-tr .co-mood__btn:focus{background:transparent;color:var(--co-bruno);font-weight:500;white-space:nowrap;padding:0 20px}
+.co-tr .co-mood__btn:hover{border-color:var(--co-verde)}
+.co-tr .co-mood__btn.is-on,.co-tr .co-mood__btn.is-on:hover,.co-tr .co-mood__btn.is-on:focus{background:var(--co-bruno);border-color:var(--co-bruno);color:#F2EFE4}
+.co-tr .co-dur button,.co-tr .co-dur button:hover,.co-tr .co-dur button:focus{background:transparent;color:var(--co-bruno);border:0;padding:0 16px}
+.co-tr .co-dur button:hover{background:rgba(255,255,255,.7)}
+.co-tr .co-dur button.is-on,.co-tr .co-dur button.is-on:hover,.co-tr .co-dur button.is-on:focus{background:var(--co-bruno);color:#F2EFE4}
+.co-tr button:focus{outline:none}
+.co-tr button:focus-visible{outline:2px solid var(--co-verde);outline-offset:3px}
+.co-tr .co-panel__frame{width:clamp(260px,calc((100vh - 380px) * .8),380px);max-width:calc(100% - 68px)}
+@media (max-height:760px){.co-tr .co-panel{top:96px}.co-tr .co-panel__help{display:none}.co-tr .co-panel__name{margin-top:30px !important}}
+</style>
+
+<div class="co-tr" id="coTr">
+
+  <!-- ===== INTESTAZIONE ===== -->
+  <header class="co-tr__intro">
+    <div class="co-tr__big" aria-hidden="true">14</div>
+    <div class="co-tw">
+      <span class="co-tey">Listino &middot; Conegliano</span>
+      <h1>Il menu del <em>benessere</em></h1>
+      <p>Quattordici modi per prenderti cura di te. Scegli come ti senti oggi: ti mostro i trattamenti pi&ugrave; adatti.</p>
+
+      <div class="co-mood" role="group" aria-label="Filtra i trattamenti">
+        <small>Oggi ho bisogno di&hellip;</small>
+        <div class="co-mood__list">
+          <button class="co-mood__btn is-on" type="button" data-mood="tutti"><i style="--dot:#392B2E"></i>Vedere tutto</button>
+          <button class="co-mood__btn" type="button" data-mood="tensioni"><i style="--dot:#C9472E"></i>Sciogliere le tensioni</button>
+          <button class="co-mood__btn" type="button" data-mood="relax"><i style="--dot:#93D3B8"></i>Rilassarmi</button>
+          <button class="co-mood__btn" type="button" data-mood="sport"><i style="--dot:#CA6841"></i>Recuperare dallo sport</button>
+          <button class="co-mood__btn" type="button" data-mood="viso"><i style="--dot:#E8A2B8"></i>Viso e pelle</button>
+          <button class="co-mood__btn" type="button" data-mood="corpo"><i style="--dot:#748B77"></i>Leggerezza e corpo</button>
+          <button class="co-mood__btn" type="button" data-mood="gravidanza"><i style="--dot:#F4A88A"></i>Gravidanza</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== MENU ===== -->
+  <section class="co-menu-tr">
+    <div class="co-tw co-menu-tr__grid">
+
+      <!-- pannello (solo desktop) -->
+      <aside class="co-panel" aria-hidden="true">
+        <div class="co-panel__frame">
+          <svg class="co-panel__rings" viewBox="0 0 200 250" fill="none">
+            <rect x="2" y="2" width="196" height="246" rx="98" stroke="#EE9370" stroke-width=".7"/>
+            <rect x="9" y="9" width="182" height="232" rx="91" stroke="#C9472E" stroke-width=".7" stroke-dasharray="2 5"/>
+            <rect x="16" y="16" width="168" height="218" rx="84" stroke="#93D3B8" stroke-width=".7"/>
+          </svg>
+          <div class="co-panel__img" id="coPanelImg"></div>
+          <div class="co-panel__num" id="coPanelNum">01</div>
+        </div>
+        <h2 class="co-panel__name" id="coPanelName">Massaggio <em>decontratturante</em></h2>
+        <p class="co-panel__for" id="coPanelFor">Per collo, spalle e schiena rigidi.</p>
+        <div class="co-panel__help">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5v.7M12 17h.01"/></svg>
+          <span>Non sai quale scegliere? <a href="https://wa.me/393272677850?text=Ciao!%20Mi%20aiuti%20a%20scegliere%20il%20trattamento%20giusto%3F" target="_blank" rel="noopener">Scrivimi</a>, ti consiglio io.</span>
+        </div>
+      </aside>
+
+      <!-- elenco -->
+      <div>
+        <!-- I prezzi con * nel brief vanno confermati con la titolare.
+             Foto: aggiungere data-img="URL-FOTO" su ogni <article>. -->
+        <div class="co-group">
+          <div class="co-group__head"><span>I.</span><h2>Massaggi olistici</h2><small>11 trattamenti</small></div>
+
+          <article class="co-t" id="decontratturante" data-mood="tensioni" data-name="Massaggio decontratturante" data-durate="30,60,90" data-for="Per collo, spalle e schiena rigidi." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">01</span><span class="co-t__name"><b>Decontratturante</b><i></i></span><span class="co-t__price"><small>da</small>&euro; 42</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Un massaggio profondo che lavora sui punti di tensione muscolare. Scioglie rigidit&agrave; e contratture dovute a postura, lavoro al computer e stress.</p>
+              <div class="co-t__tags"><span>Cervicale</span><span>Mal di schiena</span><span>Postura</span></div>
+              <div class="co-t__book"><small>Scegli la durata &middot; da &euro; 42 a &euro; 90</small><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="rilassante" data-mood="relax" data-name="Massaggio rilassante" data-durate="60,90" data-for="Per staccare la spina e dormire meglio." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">02</span><span class="co-t__name"><b>Rilassante</b><i></i></span><span class="co-t__price"><small>da</small>&euro; 58</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Manovre lente, avvolgenti e ritmiche che calmano il sistema nervoso. Il trattamento ideale quando la testa non si ferma mai.</p>
+              <div class="co-t__tags"><span>Stress</span><span>Insonnia</span><span>Ansia</span></div>
+              <div class="co-t__book"><small>Scegli la durata &middot; da &euro; 58 a &euro; 85</small><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="sportivo" data-mood="sport tensioni" data-name="Massaggio sportivo olistico" data-durate="30,60,90" data-for="Per chi si allena e vuole recuperare meglio." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">03</span><span class="co-t__name"><b>Sportivo olistico</b><i></i></span><span class="co-t__price"><small>da</small>&euro; 45</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Prepara i muscoli prima della gara o li aiuta a recuperare dopo l'allenamento, riducendo affaticamento e rigidit&agrave;.</p>
+              <div class="co-t__tags"><span>Pre gara</span><span>Recupero</span><span>Affaticamento</span></div>
+              <div class="co-t__book"><small>Scegli la durata &middot; da &euro; 45 a &euro; 95</small><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="cranio-facciale" data-mood="tensioni relax" data-name="Massaggio cranio facciale" data-durate="30,60" data-for="Per mal di testa e tensioni del viso." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">04</span><span class="co-t__name"><b>Cranio facciale</b><i></i></span><span class="co-t__price"><small>da</small>&euro; 35</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Un tocco delicato su testa, viso e collo che allenta le tensioni e lascia una sensazione di leggerezza mentale.</p>
+              <div class="co-t__tags"><span>Mal di testa</span><span>Bruxismo</span><span>Tensione</span></div>
+              <div class="co-t__book"><small>Scegli la durata &middot; da &euro; 35 a &euro; 55</small><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="prenatale" data-mood="gravidanza" data-name="Massaggio prenatale olistico" data-durate="60" data-for="Per le future mamme, in tutta sicurezza." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">05</span><span class="co-t__name"><b>Prenatale olistico</b><i></i></span><span class="co-t__price">&euro; 58</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Un massaggio dolce pensato per la gravidanza: alleggerisce gambe e schiena e regala un momento di calma a te e al tuo bambino.</p>
+              <div class="co-t__tags"><span>Gambe pesanti</span><span>Schiena</span><span>Relax</span></div>
+              <div class="co-t__book"><small>Durata 60 minuti</small><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="ayurvedico" data-mood="relax" data-name="Massaggio ayurvedico" data-durate="" data-for="Per ritrovare equilibrio ed energia." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">06</span><span class="co-t__name"><b>Ayurvedico</b><i></i></span><span class="co-t__price"><small>da</small>&euro; 60</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Ispirato all'antica tradizione indiana, con oli caldi e movimenti profondi che riequilibrano corpo e mente.</p>
+              <div class="co-t__tags"><span>Equilibrio</span><span>Energia</span><span>Oli caldi</span></div>
+              <div class="co-t__book"><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="massaggio-viso" data-mood="viso relax" data-name="Massaggio viso" data-durate="30,50" data-for="Per una pelle luminosa e distesa." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">07</span><span class="co-t__name"><b>Massaggio viso</b><i></i></span><span class="co-t__price"><small>da</small>&euro; 42</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Riattiva la circolazione, distende i lineamenti e dona luminosit&agrave; alla pelle. Un piccolo rituale di bellezza naturale.</p>
+              <div class="co-t__tags"><span>Luminosit&agrave;</span><span>Lineamenti distesi</span></div>
+              <div class="co-t__book"><small>Scegli la durata &middot; da &euro; 42 a &euro; 60</small><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="riflessologia" data-mood="relax corpo" data-name="Riflessologia plantare" data-durate="" data-for="Per gambe leggere e benessere generale." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">08</span><span class="co-t__name"><b>Riflessologia plantare</b><i></i></span><span class="co-t__price">&euro; 58</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Attraverso la pressione di punti precisi del piede, stimola il benessere di tutto il corpo e favorisce un profondo rilassamento.</p>
+              <div class="co-t__tags"><span>Piedi stanchi</span><span>Rilassamento</span></div>
+              <div class="co-t__book"><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="anticellulite" data-mood="corpo" data-name="Massaggio anticellulite olistico drenante" data-durate="" data-for="Per gambe leggere e pelle pi&ugrave; tonica." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">09</span><span class="co-t__name"><b>Anticellulite drenante</b><i></i></span><span class="co-t__price"><small>da</small>&euro; 57</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Manovre drenanti che aiutano la circolazione e riducono il senso di gonfiore. Ottimo inserito in un percorso di pi&ugrave; sedute.</p>
+              <div class="co-t__tags"><span>Ritenzione</span><span>Gambe pesanti</span><span>Percorso</span></div>
+              <div class="co-t__book"><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="lomi-lomi" data-mood="relax" data-name="Massaggio lomi-lomi" data-durate="" data-for="Per un rilassamento profondo, come un'onda." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">10</span><span class="co-t__name"><b>Lomi-lomi</b><i></i></span><span class="co-t__price">&euro; 60</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>L'antico massaggio hawaiano: lunghi movimenti fluidi con mani e avambracci, come onde del mare che sciolgono ogni tensione.</p>
+              <div class="co-t__tags"><span>Rilassamento profondo</span><span>Fluidit&agrave;</span></div>
+              <div class="co-t__book"><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="candle-massage" data-mood="relax" data-name="Candle massage" data-durate="" data-for="Per un'esperienza calda e avvolgente." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">11</span><span class="co-t__name"><b>Candle massage</b><i></i></span><span class="co-t__price">&euro; 60</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Il burro della candela si scioglie in un olio tiepido e profumato, massaggiato sulla pelle. Calore, profumo e morbidezza.</p>
+              <div class="co-t__tags"><span>Pelle morbida</span><span>Coccola</span><span>Idea regalo</span></div>
+              <div class="co-t__book"><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+        </div>
+
+        <div class="co-group">
+          <div class="co-group__head"><span>II.</span><h2>Trattamenti personalizzati</h2><small>3 trattamenti</small></div>
+
+          <article class="co-t" id="trattamento-corpo" data-mood="corpo relax" data-name="Trattamento olistico corpo" data-durate="60" data-for="Un percorso costruito su di te." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">12</span><span class="co-t__name"><b>Trattamento corpo</b><i></i></span><span class="co-t__price">&euro; 65</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Dopo un breve colloquio unisco le tecniche pi&ugrave; adatte a te in un unico trattamento su misura per il tuo corpo.</p>
+              <div class="co-t__tags"><span>Su misura</span><span>Colloquio iniziale</span></div>
+              <div class="co-t__book"><small>Durata 60 minuti</small><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="trattamento-viso" data-mood="viso" data-name="Trattamento olistico viso" data-durate="60" data-for="Un rituale completo per il tuo viso." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">13</span><span class="co-t__name"><b>Trattamento viso</b><i></i></span><span class="co-t__price">&euro; 58</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Un rituale personalizzato per il viso che unisce massaggio e cura della pelle, pensato sulle tue esigenze.</p>
+              <div class="co-t__tags"><span>Su misura</span><span>Pelle</span></div>
+              <div class="co-t__book"><small>Durata 60 minuti</small><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+
+          <article class="co-t" id="naturopatia" data-mood="corpo relax" data-name="Consulenza di naturopatia" data-durate="" data-for="Per ritrovare il benessere in modo naturale." data-img="">
+            <button class="co-t__row" type="button" aria-expanded="false"><span class="co-t__n">14</span><span class="co-t__name"><b>Consulenza di naturopatia</b><i></i></span><span class="co-t__price">&euro; 60</span><span class="co-t__plus"></span></button>
+            <div class="co-t__more"><div class="co-t__inner"><div class="co-t__box">
+              <p>Un incontro dedicato per capire le tue abitudini e i tuoi bisogni, e trovare insieme la strada naturale verso il benessere.</p>
+              <div class="co-t__tags"><span>Stile di vita</span><span>Benessere naturale</span></div>
+              <div class="co-t__book"><div class="co-dur"></div><a class="co-t__wa" target="_blank" rel="noopener">Prenota su WhatsApp</a></div>
+            </div></div></div>
+          </article>
+        </div>
+
+        <p class="co-empty" id="coEmpty">Nessun trattamento in questa categoria.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COPPIA E PACCHETTI ===== -->
+  <section class="co-duo-tr" id="coppia-pacchetti">
+    <svg class="co-duo-tr__rings" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <circle cx="100" cy="100" r="98" stroke="#EE9370"/><circle cx="100" cy="100" r="78" stroke="#F4A88A"/><circle cx="100" cy="100" r="58" stroke="#93D3B8"/>
+    </svg>
+    <div class="co-tw">
+      <div class="co-duo-tr__head">
+        <span class="co-tey">Coppia &amp; pacchetti</span>
+        <h2>Da vivere in due, <em>da regalare</em></h2>
+        <p>Un momento da condividere con chi ami, oppure un percorso di pi&ugrave; sedute pensato su di te.</p>
+      </div>
+
+      <div class="co-tickets">
+        <div class="co-ticket">
+          <div class="co-ticket__main">
+            <span class="co-ticket__kicker">Per due persone</span>
+            <h3>Massaggio <em>di coppia</em></h3>
+            <p>Due lettini, lo stesso momento di pace. Scegliete insieme il trattamento e la durata che preferite.</p>
+            <div class="co-ticket__chips"><span>30 min</span><span>60 min</span><span>90 min</span></div>
+          </div>
+          <div class="co-ticket__stub">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="24" r="14" fill="#EE9370" fill-opacity=".85"/><circle cx="30" cy="24" r="14" fill="#93D3B8" fill-opacity=".85"/></svg>
+            <b>Prezzo su richiesta</b>
+            <a href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20informazioni%20sul%20massaggio%20di%20coppia" target="_blank" rel="noopener">Chiedi info</a>
+          </div>
+        </div>
+
+        <div class="co-ticket co-ticket--malva">
+          <div class="co-ticket__main">
+            <span class="co-ticket__kicker">Percorsi su misura</span>
+            <h3>Pacchetti <em>di benessere</em></h3>
+            <p>Pi&ugrave; sedute, anche di trattamenti diversi, a un prezzo dedicato. Perfetti anche come regalo.</p>
+            <div class="co-ticket__chips"><span>Pi&ugrave; sedute</span><span>Mix di trattamenti</span><span>Idea regalo</span></div>
+          </div>
+          <div class="co-ticket__stub">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22" fill="#EE9370"/><circle cx="24" cy="24" r="16" fill="#C9472E"/><circle cx="24" cy="24" r="11" fill="#F4A88A"/><circle cx="24" cy="24" r="6" fill="#93D3B8"/></svg>
+            <b>Creiamolo insieme</b>
+            <a href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20creare%20un%20pacchetto%20di%20trattamenti" target="_blank" rel="noopener">Chiedi un preventivo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('coTr');
+  if(!root) return;
+  root.classList.add('co-tjs');
+  var WA='https://wa.me/393272677850?text=';
+  var items=[].slice.call(root.querySelectorAll('.co-t'));
+  var pImg=document.getElementById('coPanelImg'), pNum=document.getElementById('coPanelNum'),
+      pName=document.getElementById('coPanelName'), pFor=document.getElementById('coPanelFor'),
+      rings=root.querySelector('.co-panel__rings'), turn=0;
+
+  function waLink(it,dur){
+    var msg='Ciao! Vorrei prenotare: '+it.dataset.name+(dur?' ('+dur+' min)':'');
+    it.querySelector('.co-t__wa').href=WA+encodeURIComponent(msg);
+  }
+
+  items.forEach(function(it){
+    // pulsanti durata
+    var box=it.querySelector('.co-dur'), durs=(it.dataset.durate||'').split(',').filter(Boolean);
+    if(durs.length>1){
+      durs.forEach(function(d,i){
+        var b=document.createElement('button'); b.type='button'; b.textContent=d+' min';
+        if(i===0) b.classList.add('is-on');
+        b.addEventListener('click',function(){
+          box.querySelectorAll('button').forEach(function(x){x.classList.remove('is-on')});
+          b.classList.add('is-on'); waLink(it,d);
+        });
+        box.appendChild(b);
+      });
+    } else { box.remove(); }
+    waLink(it, durs[0]||'');
+
+    // apertura riga
+    var row=it.querySelector('.co-t__row');
+    row.addEventListener('click',function(){ toggle(it, !it.classList.contains('is-open')); });
+    row.addEventListener('mouseenter',function(){ show(it); });
+  });
+
+  function toggle(it,open){
+    items.forEach(function(o){ if(o!==it){ o.classList.remove('is-open'); o.querySelector('.co-t__row').setAttribute('aria-expanded','false'); } });
+    it.classList.toggle('is-open',open);
+    it.querySelector('.co-t__row').setAttribute('aria-expanded',open);
+    if(open) show(it);
+  }
+
+  function show(it){
+    if(!pName || pNum.textContent===it.querySelector('.co-t__n').textContent) return;
+    var words=it.dataset.name.split(' '), last=words.pop();
+    pImg.classList.add('is-fading');
+    setTimeout(function(){
+      pImg.style.setProperty('--img', it.dataset.img ? 'url("'+it.dataset.img+'")' : 'none');
+      pImg.classList.remove('is-fading');
+    },200);
+    pNum.textContent=it.querySelector('.co-t__n').textContent;
+    pName.innerHTML=(words.length?words.join(' ')+' ':'')+'<em>'+last+'</em>';
+    pFor.innerHTML=it.dataset.for;
+    turn+=40; if(rings) rings.style.transform='rotate('+turn+'deg)';
+  }
+
+  // filtro "come ti senti"
+  var empty=document.getElementById('coEmpty');
+  root.querySelectorAll('.co-mood__btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      root.querySelectorAll('.co-mood__btn').forEach(function(b){b.classList.remove('is-on')});
+      btn.classList.add('is-on');
+      var m=btn.dataset.mood, shown=0;
+      items.forEach(function(it){
+        var ok=m==='tutti' || (' '+it.dataset.mood+' ').indexOf(' '+m+' ')>-1;
+        it.classList.toggle('is-hidden',!ok);
+        if(!ok) it.classList.remove('is-open');
+        if(ok){ shown++; }
+      });
+      root.querySelectorAll('.co-group').forEach(function(g){
+        g.style.display=g.querySelector('.co-t:not(.is-hidden)')?'':'none';
+      });
+      empty.style.display=shown?'none':'block';
+      var first=items.filter(function(i){return !i.classList.contains('is-hidden')})[0];
+      if(first) show(first);
+    });
+  });
+
+  // apertura da link (es. /trattamenti/#decontratturante)
+  function fromHash(){
+    var id=location.hash.slice(1); if(!id) return;
+    var it=document.getElementById(id);
+    if(it && it.classList.contains('co-t')){ toggle(it,true); setTimeout(function(){ it.scrollIntoView({behavior:'smooth',block:'start'}); },50); }
+  }
+  window.addEventListener('hashchange',fromHash);
+  fromHash();
+})();
+</script>
+
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="co-f">
+  <!-- invito finale -->
+  <section class="co-f__cta" aria-labelledby="coFootTitle">
+    <svg class="co-f__rings" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <circle cx="100" cy="100" r="98" stroke="#EE9370" stroke-width=".8"/>
+      <circle cx="100" cy="100" r="80" stroke="#C9472E" stroke-width=".8"/>
+      <circle cx="100" cy="100" r="62" stroke="#F4A88A" stroke-width=".8"/>
+      <circle cx="100" cy="100" r="44" stroke="#45846E" stroke-width=".8"/>
+      <circle cx="100" cy="100" r="26" fill="#93D3B8" fill-opacity=".45"/>
+    </svg>
+    <div class="co-f__cta-in">
+      <div>
+        <span class="co-f__eyebrow">Su appuntamento a Conegliano</span>
+        <h2 class="co-f__title" id="coFootTitle">Concediti un'ora<br><em>solo per te.</em></h2>
+      </div>
+      <div>
+        <p class="co-f__lead">Scrivimi su WhatsApp o chiamami: troviamo insieme il trattamento e l'orario giusti per te. Rispondo personalmente a ogni messaggio.</p>
+        <div class="co-f__actions">
+          <a class="co-f__btn co-f__btn--wa" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio%20%F0%9F%8C%BF" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+            Prenota su WhatsApp
+          </a>
+          <a class="co-f__btn co-f__btn--tel" href="tel:+393272677850">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+            366 414 9205
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- corpo -->
+  <div class="co-f__main">
+    <div class="co-f__grid">
+      <div class="co-f__brand">
+        <a class="co-f__logo" href="../" aria-label="Cuore Olistico, home">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" fill="#EE9370"/><circle cx="24" cy="24" r="17.5" fill="#C9472E"/>
+            <circle cx="24" cy="24" r="13" fill="#F4A88A"/><circle cx="24" cy="24" r="8.5" fill="#93D3B8"/>
+          </svg>
+          <span><b>Cuore Olistico</b><i>studio olistico</i></span>
+        </a>
+        <p class="co-f__quote">&#171;La tua piccola oasi di pace, per staccare la spina dalla quotidianit&#224;.&#187;</p>
+        <div class="co-f__social">
+          <!-- inserire i link ai profili reali -->
+          <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.8c0-.8.5-1 1-1h2V2.2L14.3 2C11.4 2 10.5 4 10.5 5.9v2.6H8V12h2.5v10H14V12h2.8l.4-3.5H14Z"/></svg>
+          </a>
+          <a href="https://wa.me/393272677850" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="co-f__col" aria-label="Massaggi">
+        <h3>Massaggi</h3>
+        <ul>
+          <li><a href="../trattamenti/#decontratturante">Massaggio decontratturante</a></li>
+          <li><a href="../trattamenti/#rilassante">Massaggio rilassante</a></li>
+          <li><a href="../trattamenti/#sportivo">Sportivo olistico</a></li>
+          <li><a href="../trattamenti/#prenatale">Massaggio prenatale</a></li>
+          <li><a href="../trattamenti/#lomi-lomi">Lomi-lomi</a></li>
+          <li><a href="../trattamenti/#coppia-pacchetti">Massaggio di coppia</a></li>
+        </ul>
+      </nav>
+
+      <nav class="co-f__col" aria-label="Esplora">
+        <h3>Esplora</h3>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../trattamenti/">Tutti i trattamenti</a></li>
+          <li><a href="../trattamenti/#coppia-pacchetti">Pacchetti su misura</a></li>
+          <li><a href="../#chi-sono">Chi sono</a></li>
+          <li><a href="../contatti/">Contatti e mappa</a></li>
+        </ul>
+      </nav>
+
+      <div class="co-f__col">
+        <h3>Lo studio</h3>
+        <div class="co-f__info">
+          <div><small>Indirizzo</small>
+            <a href="https://www.google.com/maps/search/?api=1&query=Via+Immacolata+di+Lourdes+29%2FA+31015+Conegliano+TV" target="_blank" rel="noopener">Via Immacolata di Lourdes 29/A<br>31015 Conegliano (TV)</a></div>
+          <div><small>Telefono e WhatsApp</small><a href="tel:+393272677850">366 414 9205</a></div>
+          <span class="co-f__badge">Ricevo solo su appuntamento</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="co-f__word" aria-hidden="true">Cuore Olistico</div>
+  </div>
+
+  <div class="co-f__bottom">
+    <div class="co-f__bottom-in">
+      <span>&#169; <span id="coYear">2026</span> Cuore Olistico &#183; Studio olistico di massaggi a Conegliano &#183; P.IVA [da inserire]</span>
+      <span class="co-f__legal">
+        <a href="../privacy-policy/">Privacy policy</a>
+        <a href="../cookie-policy/">Cookie policy</a>
+        <span class="co-f__credit">Sito di <a href="https://zyloos.org" target="_blank" rel="noopener">Zylo OS</a></span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- Dati strutturati per la SEO locale (Google) -->
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HealthAndBeautyBusiness",
+  "name":"Cuore Olistico",
+  "description":"Studio olistico di massaggi a Conegliano. Massaggi decontratturanti, rilassanti, sportivi, prenatali, di coppia e trattamenti olistici personalizzati, su appuntamento.",
+  "telephone":"+39 366 414 9205",
+  "address":{"@type":"PostalAddress","streetAddress":"Via Immacolata di Lourdes 29/A","postalCode":"31015","addressLocality":"Conegliano","addressRegion":"TV","addressCountry":"IT"},
+  "areaServed":"Conegliano",
+  "priceRange":"\u20ac\u20ac"
+}
+</script>
+
+<!-- ======================= JS ======================= -->
+<script>
+(function(){
+  var h=document.getElementById('coHeader'), b=document.getElementById('coBurger'),
+      m=document.getElementById('coMenu'), d=document.getElementById('coDock');
+  if(!h) return;
+  function onScroll(){
+    var y=window.scrollY||0;
+    h.classList.toggle('is-scrolled', y>40);
+    if(d) d.classList.toggle('is-visible', y>260);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  function setMenu(open){
+    m.classList.toggle('is-open', open); m.setAttribute('aria-hidden', !open);
+    b.setAttribute('aria-expanded', open); b.setAttribute('aria-label', open?'Chiudi il menu':'Apri il menu');
+    b.classList.toggle('is-open', open); document.body.classList.toggle('co-lock', open);
+  }
+  b.addEventListener('click', function(){ setMenu(!m.classList.contains('is-open')); });
+  m.addEventListener('click', function(e){ if(e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') setMenu(false); });
+
+  // evidenzia la voce della pagina corrente
+  var p=location.pathname.replace(/\/+$/,'/');
+  document.querySelectorAll('.co-link').forEach(function(a){
+    var href=a.getAttribute('href');
+    if(href.indexOf('#')===-1 && href===p) a.classList.add('is-active');
+  });
+})();
+document.getElementById('coYear').textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>

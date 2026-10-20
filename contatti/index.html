@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Contatti | Cuore Olistico</title>
+</head>
+<body>
+<!-- ============================================================
+     CUORE OLISTICO &#183; HEADER + FOOTER (HTML + CSS + JS in un unico file)
+     Nessun font esterno: usa i font di sistema.
+     In Elementor: incollare la parte HEADER nel template Header e la parte FOOTER
+     nel template Footer (widget HTML). Lo <style> e lo <script> vanno messi una
+     sola volta (es. nel template Header).
+     Da completare: logo originale, link social, P.IVA, pagine privacy/cookie.
+     ============================================================ -->
+<style>
+.co-scope{
+    --co-crema:#F2EFE4; --co-crema-2:#F8F6EF; --co-malva:#E8D9E2; --co-salvia:#748B77;
+    --co-verde:#45846E; --co-verde-scuro:#2F4A3F; --co-terra:#CA6841; --co-terra-scuro:#B4552F;
+    --co-bruno:#392B2E; --co-serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif; --co-sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --co-top:38px; --co-bar:88px; --co-bar-small:70px;
+    font-family:var(--co-sans); color:var(--co-bruno); -webkit-font-smoothing:antialiased;
+  }
+  .co-scope *,.co-scope *::before,.co-scope *::after{box-sizing:border-box}
+  .co-scope a{color:inherit;text-decoration:none}
+  .co-scope svg{display:block}
+  /* ---------- struttura fissa ---------- */
+  .co-h{position:fixed;inset:0 0 auto 0;z-index:999}
+  .co-h-spacer{height:calc(var(--co-top) + var(--co-bar))}
+  /* ---------- barra superiore ---------- */
+  .co-top{height:var(--co-top);background:var(--co-verde-scuro);color:#EDE7DA;font-size:13px;letter-spacing:.02em;
+    overflow:hidden;transition:height .35s ease,opacity .25s ease}
+  .co-top__in{max-width:1280px;height:100%;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .co-top__item{display:flex;align-items:center;gap:8px;white-space:nowrap}
+  .co-top__item svg{width:14px;height:14px;opacity:.75}
+  .co-top__item a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+  .co-top__dot{width:6px;height:6px;border-radius:50%;background:#9FD8BF;box-shadow:0 0 0 4px rgba(159,216,191,.18)}
+  .co-top__right{display:flex;gap:28px}
+  /* ---------- barra principale ---------- */
+  .co-bar{height:var(--co-bar);background:rgba(242,239,228,.88);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid rgba(57,43,46,.07);transition:height .35s ease,box-shadow .35s ease,background .35s ease}
+  .co-bar__in{max-width:1280px;height:100%;margin:0 auto;padding:0 32px;
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
+  .co-nav{display:flex;align-items:center;gap:34px}
+  .co-nav--r{justify-content:flex-end;gap:22px}
+  .co-link{position:relative;font-size:15px;font-weight:500;letter-spacing:.01em;padding:8px 0;color:var(--co-bruno);transition:color .25s}
+  .co-link::after{content:"";position:absolute;left:50%;bottom:-2px;width:5px;height:5px;border-radius:50%;background:var(--co-terra);
+    transform:translateX(-50%) scale(0);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+  .co-link:hover,.co-link.is-active{color:var(--co-verde)}
+  .co-link:hover::after,.co-link.is-active::after{transform:translateX(-50%) scale(1)}
+  /* logo */
+  .co-logo{display:flex;flex-direction:column;align-items:center;gap:4px;line-height:1}
+  .co-logo__txt{display:flex;flex-direction:column;align-items:center;gap:5px}
+  .co-logo__mark{width:46px;height:46px;transition:width .35s,height .35s,transform .6s ease}
+  .co-logo:hover .co-logo__mark{transform:rotate(-8deg) scale(1.04)}
+  .co-logo__name{font-family:var(--co-sans);font-weight:600;font-size:15px;letter-spacing:.2em;color:var(--co-verde);text-transform:uppercase}
+  .co-logo__sub{font-family:var(--co-serif);font-style:italic;font-size:13px;letter-spacing:.32em;color:var(--co-salvia)}
+  /* pulsanti */
+  .co-ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(69,132,110,.35);color:var(--co-verde);
+    transition:background .25s,color .25s,border-color .25s}
+  .co-ico svg{width:18px;height:18px}
+  .co-ico:hover{background:var(--co-verde);border-color:var(--co-verde);color:#fff}
+  .co-btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px 0 18px;border-radius:999px;background:var(--co-terra);color:#fff !important;
+    font-weight:600;font-size:15px;letter-spacing:.01em;box-shadow:0 8px 22px -10px rgba(202,104,65,.75);transition:background .25s,transform .25s,box-shadow .25s}
+  .co-btn svg{width:20px;height:20px}
+  .co-btn:hover{background:var(--co-terra-scuro);transform:translateY(-2px);box-shadow:0 14px 26px -12px rgba(180,85,47,.8)}
+  /* burger */
+  .co-burger{display:none;width:48px;height:48px;border:0;border-radius:50%;background:var(--co-malva);cursor:pointer;position:relative}
+  .co-burger span{position:absolute;left:14px;right:14px;height:2px;border-radius:2px;background:var(--co-bruno);transition:transform .35s,opacity .2s,top .35s}
+  .co-burger span:nth-child(1){top:18px}.co-burger span:nth-child(2){top:23px;right:20px}.co-burger span:nth-child(3){top:28px}
+  /* ---------- stato "scrollato" ---------- */
+  .co-h.is-scrolled .co-top{height:0;opacity:0}
+  .co-h.is-scrolled .co-bar{height:var(--co-bar-small);background:rgba(242,239,228,.96);box-shadow:0 10px 30px -18px rgba(57,43,46,.35)}
+  .co-h.is-scrolled .co-logo__mark{width:36px;height:36px}
+  /* ---------- menu mobile ---------- */
+  .co-menu{position:fixed;inset:0;z-index:998;background:var(--co-crema);padding:calc(var(--co-bar-small) + 36px) 28px 120px;
+    display:flex;flex-direction:column;gap:36px;overflow:auto;opacity:0;visibility:hidden;transform:translateY(-12px);
+    transition:opacity .35s ease,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s .45s}
+  .co-menu.is-open{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+  .co-menu__rings{position:absolute;right:-120px;bottom:-120px;width:380px;height:380px;opacity:.5;pointer-events:none}
+  .co-menu__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;position:relative}
+  .co-menu__list a{display:flex;align-items:baseline;gap:16px;font-family:var(--co-serif);font-weight:500;font-size:clamp(34px,9vw,46px);line-height:1.15;color:var(--co-bruno)}
+  .co-menu__list a small{font-family:var(--co-sans);font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--co-terra)}
+  .co-menu__list a:hover em{color:var(--co-verde)}
+  .co-menu__list em{font-style:italic}
+  .co-menu__info{position:relative;border-top:1px solid rgba(57,43,46,.12);padding-top:24px;display:grid;gap:10px;font-size:15px;line-height:1.5}
+  .co-menu__info strong{font-family:var(--co-serif);font-size:20px;font-weight:600;color:var(--co-verde)}
+  .co-menu .co-btn{align-self:flex-start}
+  /* ---------- barra azioni fissa (solo mobile) ---------- */
+  .co-dock{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:1000;padding:8px;border-radius:999px;
+    background:rgba(47,74,63,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 16px 40px -14px rgba(0,0,0,.45);
+    grid-template-columns:1fr 1.4fr;gap:8px;transform:translateY(140%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+  .co-dock.is-visible{transform:none}
+  .co-dock a{height:50px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;color:#fff}
+  .co-dock a svg{width:19px;height:19px}
+  .co-dock__call{background:rgba(255,255,255,.1)}
+  .co-dock__wa{background:var(--co-terra)}
+  /* ---------- responsive ---------- */
+  @media (max-width:1100px){
+    .co-bar__in{grid-template-columns:auto 1fr auto}
+    .co-nav--l,.co-nav--r .co-link{display:none}
+    .co-logo{flex-direction:row;gap:12px;grid-column:1}
+    .co-logo__txt{align-items:flex-start}
+    .co-nav--r{grid-column:3}
+    .co-burger{display:block}
+  }
+  @media (max-width:767px){
+    .co-scope{--co-bar:72px;--co-bar-small:64px}
+    .co-top{display:none}
+    .co-h-spacer{height:var(--co-bar)}
+    .co-bar__in{padding:0 16px}
+    .co-nav--r .co-ico,.co-nav--r .co-btn{display:none}
+    .co-logo__mark{width:40px;height:40px}
+    .co-logo__name{font-size:13px;letter-spacing:.16em}
+    .co-logo__sub{font-size:12px}
+    .co-dock{display:grid}
+  }
+  @media (min-width:768px){ .co-menu{padding-left:48px;padding-right:48px} }
+  @media (prefers-reduced-motion:reduce){ .co-scope *{transition:none !important} }
+  body.co-lock{overflow:hidden}
+  body.co-lock .co-dock{transform:translateY(140%)}
+  .co-burger.is-open span:nth-child(1){top:23px;transform:rotate(45deg)}
+  .co-burger.is-open span:nth-child(2){opacity:0}
+  .co-burger.is-open span:nth-child(3){top:23px;transform:rotate(-45deg)}
+  .co-f{
+    --co-crema:#F2EFE4; --co-malva:#E8D9E2; --co-salvia:#748B77; --co-verde:#45846E; --co-verde-scuro:#2F4A3F;
+    --co-terra:#CA6841; --co-terra-scuro:#B4552F; --co-bruno:#392B2E;
+    --co-serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif; --co-sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-family:var(--co-sans); color:var(--co-bruno); -webkit-font-smoothing:antialiased; position:relative;
+  }
+  .co-f *,.co-f *::before,.co-f *::after{box-sizing:border-box}
+  .co-f a{color:inherit;text-decoration:none}
+  .co-f svg{display:block}
+  /* ---------- invito finale ---------- */
+  .co-f__cta{background:var(--co-malva);padding:110px 32px 170px;position:relative;overflow:hidden}
+  .co-f__cta-in{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center;position:relative;z-index:1}
+  .co-f__eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--co-verde)}
+  .co-f__eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+  .co-f__title{font-family:var(--co-serif);font-weight:500;font-size:clamp(40px,5.6vw,76px);line-height:1.02;letter-spacing:-.01em;margin:18px 0 0;color:var(--co-bruno)}
+  .co-f__title em{font-style:italic;color:var(--co-verde)}
+  .co-f__lead{font-size:17px;line-height:1.65;max-width:440px;margin:0 0 30px;color:rgba(57,43,46,.82)}
+  .co-f__actions{display:flex;flex-wrap:wrap;gap:12px}
+  .co-f__btn{display:inline-flex;align-items:center;gap:10px;height:54px;padding:0 26px 0 22px;border-radius:999px;font-weight:600;font-size:16px;
+    transition:background .25s,transform .25s,box-shadow .25s,color .25s}
+  .co-f__btn svg{width:20px;height:20px}
+  .co-f__btn--wa{background:var(--co-terra);color:#fff !important;box-shadow:0 10px 26px -12px rgba(202,104,65,.8)}
+  .co-f__btn--wa:hover{background:var(--co-terra-scuro);transform:translateY(-2px)}
+  .co-f__btn--tel{border:1.5px solid rgba(57,43,46,.25);color:var(--co-bruno)}
+  .co-f__btn--tel:hover{border-color:var(--co-verde);color:var(--co-verde)}
+  .co-f__rings{position:absolute;right:-140px;top:50%;width:620px;height:620px;transform:translateY(-55%);opacity:.55;pointer-events:none;
+    animation:coBreath 9s ease-in-out infinite}
+  @keyframes coBreath{50%{transform:translateY(-55%) scale(1.05)}}
+  /* ---------- corpo del footer ---------- */
+  .co-f__main{background:var(--co-verde-scuro);color:#E9E4D6;border-radius:44px 44px 0 0;margin-top:-80px;position:relative;z-index:2;overflow:hidden;
+    padding:80px 32px 0}
+  .co-f__grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+  .co-f__brand{display:flex;flex-direction:column;gap:22px}
+  .co-f__logo{display:flex;align-items:center;gap:14px}
+  .co-f__logo svg{width:52px;height:52px}
+  .co-f__logo b{display:block;font-weight:600;font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+  .co-f__logo i{display:block;margin-top:5px;font-family:var(--co-serif);font-size:14px;letter-spacing:.32em;color:#B9CDBB}
+  .co-f__quote{font-family:var(--co-serif);font-style:italic;font-size:24px;line-height:1.3;color:#F2EFE4;margin:0;max-width:330px}
+  .co-f__social{display:flex;gap:10px}
+  .co-f__social a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(233,228,214,.25);transition:background .25s,border-color .25s,color .25s}
+  .co-f__social a:hover{background:#E9E4D6;border-color:#E9E4D6;color:var(--co-verde-scuro)}
+  .co-f__social svg{width:18px;height:18px}
+  .co-f__col h3{font-family:var(--co-sans);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#9FD8BF;margin:8px 0 22px}
+  .co-f__col ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:15px}
+  .co-f__col a{position:relative;transition:color .2s}
+  .co-f__col a:hover{color:#fff}
+  .co-f__col li a::before{content:"";position:absolute;left:-14px;top:50%;width:5px;height:5px;margin-top:-2px;border-radius:50%;background:var(--co-terra);
+    opacity:0;transform:scale(0);transition:.25s}
+  .co-f__col li a:hover::before{opacity:1;transform:scale(1)}
+  .co-f__info{display:grid;gap:18px;font-size:15px;line-height:1.55}
+  .co-f__info small{display:block;font-size:12px;letter-spacing:.06em;color:#9DB3A2;margin-bottom:2px}
+  .co-f__info a{border-bottom:1px solid rgba(233,228,214,.25);padding-bottom:1px}
+  .co-f__info a:hover{border-color:#fff}
+  .co-f__badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(159,216,191,.12);color:#CFEBDD;font-size:13px;width:max-content}
+  .co-f__badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#9FD8BF}
+  /* scritta gigante decorativa */
+  .co-f__word{max-width:1280px;margin:70px auto 0;font-family:var(--co-serif);font-weight:500;font-style:italic;white-space:nowrap;
+    font-size:clamp(44px,13.5vw,196px);line-height:.8;letter-spacing:-.02em;text-align:center;
+    color:transparent;-webkit-text-stroke:1px rgba(233,228,214,.22);user-select:none;transform:translateY(12%)}
+  .co-f__bottom{background:#263D33;position:relative;z-index:2}
+  .co-f__bottom-in{max-width:1280px;margin:0 auto;padding:22px 32px;display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center;
+    font-size:13px;color:#A9BBAE}
+  .co-f__legal{display:flex;flex-wrap:wrap;gap:8px 22px}
+  .co-f__legal a:hover,.co-f__credit a:hover{color:#fff}
+  .co-f__credit a{color:#E9E4D6}
+  /* ---------- responsive ---------- */
+  @media (max-width:1024px){
+    .co-f__cta-in{grid-template-columns:1fr;gap:24px}
+    .co-f__grid{grid-template-columns:1fr 1fr;gap:44px 32px}
+    .co-f__brand{grid-column:1/-1}
+  }
+  @media (max-width:767px){
+    .co-f__cta{padding:72px 16px 140px}
+    .co-f__rings{width:380px;height:380px;right:-170px;top:20%}
+    .co-f__actions{flex-direction:column}
+    .co-f__btn{justify-content:center}
+    .co-f__main{padding:60px 16px 0;border-radius:32px 32px 0 0}
+    .co-f__grid{grid-template-columns:1fr;gap:38px}
+    .co-f__col li a::before{display:none}
+    .co-f__word{margin-top:50px}
+    .co-f__bottom-in{padding:20px 16px 96px;flex-direction:column;align-items:flex-start}  /* 96px: spazio per la barra azioni mobile */
+  }
+  @media (prefers-reduced-motion:reduce){ .co-f__rings{animation:none} }
+/* --- correzione: stili pulsante del tema --- */
+.co-scope .co-burger,.co-scope .co-burger:hover,.co-scope .co-burger:focus{background:var(--co-malva);border:0;border-radius:50%;padding:0;color:var(--co-bruno);box-shadow:none}
+.co-scope .co-burger:hover{background:#DFC9D6}
+.co-scope .co-burger:focus{outline:none}
+.co-scope .co-burger:focus-visible{outline:2px solid var(--co-verde);outline-offset:3px}
+  /* contenuto di esempio tra header e footer: eliminare in WordPress */
+  body{margin:0}
+  .co-demo{min-height:70vh;display:grid;place-items:center;background:#F2EFE4;color:#8a7c78;font:15px system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}
+</style>
+
+<!-- ======================= HEADER ======================= -->
+<div class="co-scope">
+  <header class="co-h" id="coHeader">
+    <!-- barra superiore -->
+    <div class="co-top">
+      <div class="co-top__in">
+        <span class="co-top__item"><span class="co-top__dot" aria-hidden="true"></span>Ricevo solo su appuntamento</span>
+        <div class="co-top__right">
+          <a class="co-top__item" href="https://www.google.com/maps/search/?api=1&query=Via+Immacolata+di+Lourdes+29%2FA+31015+Conegliano+TV" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 1 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            Via Immacolata di Lourdes 29/A, Conegliano
+          </a>
+          <a class="co-top__item" href="tel:+393272677850">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+            366 414 9205
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- barra principale -->
+    <div class="co-bar">
+      <div class="co-bar__in">
+        <nav class="co-nav co-nav--l" aria-label="Menu principale">
+          <a class="co-link" href="../trattamenti/">Trattamenti</a>
+          <a class="co-link" href="../trattamenti/#coppia-pacchetti">Coppia &amp; pacchetti</a>
+          <a class="co-link" href="../#chi-sono">Chi sono</a>
+        </nav>
+
+        <a class="co-logo" href="../" aria-label="Cuore Olistico, torna alla home">
+          <!-- LOGO SEGNAPOSTO: sostituire con il file originale -->
+          <svg class="co-logo__mark" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" fill="#EE9370"/>
+            <circle cx="24" cy="24" r="17.5" fill="#C9472E"/>
+            <circle cx="24" cy="24" r="13" fill="#F4A88A"/>
+            <circle cx="24" cy="24" r="8.5" fill="#93D3B8"/>
+          </svg>
+          <span class="co-logo__txt">
+            <span class="co-logo__name">Cuore Olistico</span>
+            <span class="co-logo__sub">studio olistico</span>
+          </span>
+        </a>
+
+        <div class="co-nav co-nav--r">
+          <a class="co-link" href="../contatti/">Contatti</a>
+          <a class="co-ico" href="tel:+393272677850" aria-label="Chiama 366 414 9205" title="Chiama">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+          </a>
+          <a class="co-btn" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio%20%F0%9F%8C%BF" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+            Prenota su WhatsApp
+          </a>
+          <button class="co-burger" id="coBurger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="coMenu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="co-h-spacer" aria-hidden="true"></div>
+
+  <!-- menu mobile a tutto schermo -->
+  <div class="co-menu" id="coMenu" aria-hidden="true">
+    <svg class="co-menu__rings" viewBox="0 0 200 200" aria-hidden="true" fill="none">
+      <circle cx="100" cy="100" r="96" stroke="#EE9370" stroke-width="1.2"/><circle cx="100" cy="100" r="76" stroke="#C9472E" stroke-width="1.2"/>
+      <circle cx="100" cy="100" r="56" stroke="#F4A88A" stroke-width="1.2"/><circle cx="100" cy="100" r="36" stroke="#93D3B8" stroke-width="1.2"/>
+    </svg>
+    <ul class="co-menu__list">
+      <li><a href="../"><small>01</small><em>Home</em></a></li>
+      <li><a href="../trattamenti/"><small>02</small><em>Trattamenti</em></a></li>
+      <li><a href="../trattamenti/#coppia-pacchetti"><small>03</small><em>Coppia &amp; pacchetti</em></a></li>
+      <li><a href="../#chi-sono"><small>04</small><em>Chi sono</em></a></li>
+      <li><a href="../contatti/"><small>05</small><em>Contatti</em></a></li>
+    </ul>
+    <div class="co-menu__info">
+      <strong>La tua piccola oasi di pace</strong>
+      <span>Via Immacolata di Lourdes 29/A, Conegliano (TV)</span>
+      <a href="tel:+393272677850">Tel. 366 414 9205</a>
+      <span>Ricevo solo su appuntamento</span>
+    </div>
+    <a class="co-btn" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio%20%F0%9F%8C%BF" target="_blank" rel="noopener">Prenota su WhatsApp</a>
+  </div>
+
+  <!-- barra azioni fissa, solo smartphone -->
+  <div class="co-dock" id="coDock">
+    <a class="co-dock__call" href="tel:+393272677850">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Chiama
+    </a>
+    <a class="co-dock__wa" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio%20%F0%9F%8C%BF" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>Prenota ora
+    </a>
+  </div>
+</div>
+
+<!-- ======================= CONTENUTO PAGINA (esempio) ======================= -->
+<style>
+.co-ct{
+  --co-crema:#F2EFE4; --co-crema-2:#F8F6EF; --co-malva:#E8D9E2; --co-salvia:#748B77;
+  --co-verde:#45846E; --co-verde-scuro:#2F4A3F; --co-terra:#CA6841; --co-terra-scuro:#B4552F; --co-bruno:#392B2E;
+  --co-serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --co-sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  font-family:var(--co-sans); color:var(--co-bruno); background:var(--co-crema); -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+.co-ct *,.co-ct *::before,.co-ct *::after{box-sizing:border-box}
+.co-ct a{color:inherit;text-decoration:none}
+.co-ct svg{display:block}
+.co-ct h1,.co-ct h2,.co-ct h3{font-family:var(--co-serif);font-weight:500;margin:0;letter-spacing:-.01em;color:var(--co-bruno)}
+.co-ct p{margin:0}
+.co-ct button,.co-ct input{font-family:inherit}
+.co-ct input{color:inherit}
+.co-cw{max-width:1280px;margin:0 auto;padding:0 32px}
+.co-cey{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--co-verde)}
+.co-cey::before{content:"";width:28px;height:1px;background:currentColor}
+
+/* ---------- INTESTAZIONE + CANALI ---------- */
+.co-ct__top{padding:80px 0 40px;position:relative}
+.co-ct__top h1{font-size:clamp(48px,7vw,100px);line-height:.95;margin-top:20px;max-width:900px}
+.co-ct__top h1 em{font-style:italic;color:var(--co-verde)}
+.co-ct__top > .co-cw > p{max-width:520px;margin-top:22px !important;font-size:18px;line-height:1.65;color:rgba(57,43,46,.8)}
+.co-ways{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:18px;margin-top:52px}
+.co-way{position:relative;border-radius:28px;padding:28px 28px 26px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;overflow:hidden;
+  background:var(--co-crema-2);transition:transform .35s,box-shadow .35s}
+.co-way:hover{transform:translateY(-5px);box-shadow:0 26px 50px -30px rgba(57,43,46,.5)}
+.co-way__ic{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--co-malva);color:var(--co-verde)}
+.co-way__ic svg{width:24px;height:24px}
+.co-way small{display:block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.co-way b{display:block;font-family:var(--co-serif);font-weight:500;font-size:28px;line-height:1.15;margin-top:6px}
+.co-way__go{position:absolute;right:24px;top:28px;width:40px;height:40px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;opacity:.5;transition:transform .35s,opacity .35s}
+.co-way__go svg{width:16px;height:16px}
+.co-way:hover .co-way__go{transform:rotate(-45deg);opacity:1}
+.co-way--wa{background:var(--co-terra);color:#fff}
+.co-way--wa .co-way__ic{background:rgba(255,255,255,.18);color:#fff}
+.co-way--wa::after{content:"";position:absolute;right:-70px;bottom:-90px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle,transparent 40%,rgba(255,255,255,.14) 41%,rgba(255,255,255,.14) 43%,transparent 44%,transparent 58%,rgba(255,255,255,.14) 59%,rgba(255,255,255,.14) 61%,transparent 62%)}
+
+/* ---------- COMPOSITORE MESSAGGIO ---------- */
+.co-comp{padding:90px 0 110px}
+.co-comp__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
+.co-comp h2{font-size:clamp(36px,4.4vw,58px);line-height:1.05;margin-top:16px}
+.co-comp h2 em{font-style:italic;color:var(--co-verde)}
+.co-comp__lead{margin-top:16px !important;font-size:17px;line-height:1.65;color:rgba(57,43,46,.78);max-width:520px}
+.co-step-f{margin-top:34px}
+.co-step-f > label,.co-step-f > span{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(57,43,46,.65);margin-bottom:14px}
+.co-step-f > label i,.co-step-f > span i{width:26px;height:26px;border-radius:50%;background:var(--co-bruno);color:#F2EFE4;display:grid;place-items:center;font-style:normal;font-size:12px;letter-spacing:0}
+.co-chips-f{display:flex;flex-wrap:wrap;gap:8px}
+.co-chip-f{color:var(--co-bruno);height:42px;padding:0 18px;border-radius:999px;border:1.5px solid rgba(57,43,46,.16);background:transparent;font-size:15px;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.co-chip-f:hover{border-color:var(--co-verde)}
+.co-chip-f.is-on{background:var(--co-verde);border-color:var(--co-verde);color:#fff}
+.co-input{width:100%;max-width:420px;height:52px;padding:0 20px;border-radius:16px;border:1.5px solid rgba(57,43,46,.16);background:var(--co-crema-2);font-size:16px;outline:none;transition:border-color .2s}
+.co-input:focus{border-color:var(--co-verde)}
+.co-send{margin-top:36px;display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;border:0;background:var(--co-terra);color:#fff;font-weight:600;font-size:16px;cursor:pointer;
+  box-shadow:0 12px 28px -12px rgba(202,104,65,.85);transition:background .25s,transform .25s}
+.co-send:hover{background:var(--co-terra-scuro);transform:translateY(-2px)}
+.co-send svg{width:20px;height:20px}
+.co-note{margin-top:14px !important;font-size:13px;color:rgba(57,43,46,.6);max-width:440px;line-height:1.5}
+
+/* telefono */
+.co-phone{justify-self:center;width:330px;border-radius:46px;padding:12px;background:var(--co-bruno);box-shadow:0 50px 90px -40px rgba(57,43,46,.6);position:relative}
+.co-phone::before{content:"";position:absolute;inset:-60px -80px;z-index:-1;border-radius:50%;
+  background:radial-gradient(circle,transparent 46%,rgba(238,147,112,.35) 46.5%,transparent 47.5%,transparent 56%,rgba(147,211,184,.5) 56.5%,transparent 57.5%,transparent 66%,rgba(201,71,46,.25) 66.5%,transparent 67.5%)}
+.co-phone__scr{border-radius:36px;overflow:hidden;background:#EFE7DC;height:560px;display:flex;flex-direction:column}
+.co-phone__bar{background:var(--co-verde-scuro);color:#fff;padding:34px 18px 14px;display:flex;align-items:center;gap:12px}
+.co-phone__bar svg{width:40px;height:40px;flex:none}
+.co-phone__bar b{display:block;font-size:15px}
+.co-phone__bar small{display:block;font-size:12px;opacity:.75}
+.co-phone__chat{flex:1;padding:18px 14px;display:flex;flex-direction:column;gap:10px;justify-content:flex-end;
+  background-image:radial-gradient(rgba(57,43,46,.06) 1px,transparent 1px);background-size:14px 14px}
+.co-bub{max-width:86%;padding:10px 14px 18px;border-radius:16px;font-size:14px;line-height:1.45;position:relative;box-shadow:0 1px 1px rgba(0,0,0,.06);white-space:pre-line}
+.co-bub small{position:absolute;right:10px;bottom:4px;font-size:10px;opacity:.55}
+.co-bub--in{background:#fff;align-self:flex-start;border-top-left-radius:4px}
+.co-bub--out{background:#DCF3D6;align-self:flex-end;border-top-right-radius:4px;transition:transform .25s}
+.co-bub--out.is-pop{transform:scale(1.03)}
+.co-phone__type{display:flex;align-items:center;gap:8px;padding:10px 12px 16px}
+.co-phone__type span{flex:1;height:38px;border-radius:999px;background:#fff;display:flex;align-items:center;padding:0 14px;font-size:13px;color:rgba(57,43,46,.45)}
+.co-phone__type i{width:38px;height:38px;border-radius:50%;background:var(--co-verde);display:grid;place-items:center;color:#fff}
+.co-phone__type i svg{width:16px;height:16px}
+
+/* ---------- MAPPA (caricata solo su consenso) ---------- */
+.co-map{padding:0 0 110px;scroll-margin-top:110px}
+.co-map__grid{display:grid;grid-template-columns:.8fr 1.2fr;border-radius:40px;overflow:hidden;background:var(--co-verde-scuro);color:#E9E4D6}
+.co-map__info{padding:56px 48px;display:flex;flex-direction:column;gap:28px}
+.co-map__info .co-cey{color:#9FD8BF}
+.co-map__info h2{color:#F2EFE4;font-size:clamp(34px,3.6vw,48px);line-height:1.05}
+.co-map__info h2 em{font-style:italic;color:#F4A88A}
+.co-map__info dl{margin:0;display:grid;gap:22px}
+.co-map__info dt{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#9DB3A2}
+.co-map__info dd{margin:6px 0 0;font-family:var(--co-serif);font-size:23px;line-height:1.35;color:#F2EFE4}
+.co-map__links{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.co-map__links a{display:inline-flex;align-items:center;gap:8px;height:46px;padding:0 20px;border-radius:999px;border:1.5px solid rgba(233,228,214,.3);font-size:14px;font-weight:600;transition:background .25s,color .25s,border-color .25s}
+.co-map__links a:hover{background:#F2EFE4;color:var(--co-verde-scuro);border-color:#F2EFE4}
+.co-map__links svg{width:16px;height:16px}
+.co-map__box{position:relative;min-height:520px;background:var(--co-crema-2)}
+.co-map__box iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.co-map__ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:32px;color:var(--co-bruno)}
+.co-map__ph > svg.co-map__lines{position:absolute;inset:0;width:100%;height:100%}
+.co-map__pin{position:relative;width:86px;height:86px}
+.co-map__pin::before{content:"";position:absolute;inset:-22px;border-radius:50%;background:rgba(202,104,65,.2);animation:coPulse2 2.4s ease-out infinite}
+@keyframes coPulse2{from{transform:scale(.6);opacity:1}to{transform:scale(1.7);opacity:0}}
+.co-map__pin svg{position:relative;width:100%;height:100%}
+.co-map__ph p{position:relative;max-width:340px;font-size:14px;line-height:1.55;color:rgba(57,43,46,.7);background:rgba(248,246,239,.85);padding:6px 10px;border-radius:10px}
+.co-map__btn{position:relative;display:inline-flex;align-items:center;gap:8px;height:50px;padding:0 24px;border-radius:999px;border:0;background:var(--co-bruno);color:#F2EFE4;font-weight:600;font-size:15px;cursor:pointer;transition:background .25s}
+.co-map__btn:hover{background:var(--co-verde)}
+
+/* ---------- DOMANDE ---------- */
+.co-faq{padding:0 0 120px}
+.co-faq__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
+.co-faq h2{font-size:clamp(36px,4.4vw,56px);line-height:1.05;margin-top:16px}
+.co-faq h2 em{font-style:italic;color:var(--co-verde)}
+.co-faq__side p{margin-top:16px !important;font-size:16px;line-height:1.65;color:rgba(57,43,46,.75)}
+.co-faq details{border-bottom:1px solid rgba(57,43,46,.14)}
+.co-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-family:var(--co-serif);font-size:24px;line-height:1.25}
+.co-faq summary::-webkit-details-marker{display:none}
+.co-faq summary::after{content:"";flex:none;width:12px;height:12px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translate(-3px,-3px);transition:transform .3s}
+.co-faq details[open] summary{color:var(--co-verde);font-style:italic}
+.co-faq details[open] summary::after{transform:rotate(-135deg)}
+.co-faq details p{padding:0 40px 26px 0;font-size:16px;line-height:1.7;color:rgba(57,43,46,.8)}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:1024px){
+  .co-ways{grid-template-columns:1fr 1fr}
+  .co-way--wa{grid-column:1/-1}
+  .co-comp__grid,.co-map__grid,.co-faq__grid{grid-template-columns:1fr}
+  .co-faq__grid{gap:32px}
+  .co-map__box{min-height:420px}
+}
+@media (max-width:767px){
+  .co-cw{padding:0 16px}
+  .co-ct__top{padding:48px 0 24px}
+  .co-ways{grid-template-columns:1fr;margin-top:36px}
+  .co-way{min-height:0}
+  .co-comp{padding:72px 0 80px}
+  .co-comp__grid{gap:48px}
+  .co-send{width:100%;justify-content:center}
+  .co-phone{width:100%;max-width:330px}
+  .co-phone::before{display:none}
+  .co-phone__scr{height:460px}
+  .co-map{padding-bottom:80px}
+  .co-map__grid{border-radius:28px}
+  .co-map__info{padding:40px 24px}
+  .co-map__box{min-height:360px}
+  .co-faq{padding-bottom:90px}
+  .co-faq summary{font-size:20px}
+  .co-faq details p{padding-right:0}
+}
+@media (prefers-reduced-motion:reduce){.co-ct *{transition:none !important;animation:none !important}}
+/* --- correzione: stili pulsante del tema --- */
+.co-ct .co-chip-f,.co-ct .co-chip-f:hover,.co-ct .co-chip-f:focus{background:transparent;color:var(--co-bruno);padding:0 18px;font-size:15px;font-weight:400;white-space:nowrap;border-radius:999px}
+.co-ct .co-chip-f:hover{border-color:var(--co-verde)}
+.co-ct .co-chip-f.is-on,.co-ct .co-chip-f.is-on:hover,.co-ct .co-chip-f.is-on:focus{background:var(--co-verde);border-color:var(--co-verde);color:#fff}
+.co-ct .co-send,.co-ct .co-send:hover,.co-ct .co-send:focus{background:var(--co-terra);color:#fff;border:0;border-radius:999px;padding:0 28px;font-size:16px;font-weight:600}
+.co-ct .co-send:hover{background:var(--co-terra-scuro)}
+.co-ct .co-map__btn,.co-ct .co-map__btn:hover,.co-ct .co-map__btn:focus{background:var(--co-bruno);color:#F2EFE4;border:0;border-radius:999px;padding:0 24px;font-size:15px;font-weight:600}
+.co-ct .co-map__btn:hover{background:var(--co-verde)}
+.co-ct button:focus{outline:none}
+.co-ct button:focus-visible{outline:2px solid var(--co-verde);outline-offset:3px}
+</style>
+
+<div class="co-ct" id="coCt">
+
+  <!-- ===== INTESTAZIONE + CANALI ===== -->
+  <section class="co-ct__top">
+    <div class="co-cw">
+      <span class="co-cey">Contatti</span>
+      <h1>Scrivimi, <em>ti rispondo io.</em></h1>
+      <p>Niente centralini n&eacute; moduli complicati: dietro ogni messaggio ci sono io. Ricevo su appuntamento nel mio studio a Conegliano.</p>
+
+      <div class="co-ways">
+        <a class="co-way co-way--wa" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio" target="_blank" rel="noopener">
+          <span class="co-way__ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg></span>
+          <span><small>Il modo pi&ugrave; veloce</small><b>Scrivimi su WhatsApp</b></span>
+          <span class="co-way__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="co-way" href="tel:+393272677850">
+          <span class="co-way__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+          <span><small>Chiamami</small><b>366 414 9205</b></span>
+          <span class="co-way__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+        <a class="co-way" href="#dove-sono">
+          <span class="co-way__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 1 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <span><small>Vieni in studio</small><b>Via Immacolata di Lourdes 29/A</b></span>
+          <span class="co-way__go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMPOSITORE MESSAGGIO ===== -->
+  <section class="co-comp">
+    <div class="co-cw co-comp__grid">
+      <div>
+        <span class="co-cey">Prenota in 3 tocchi</span>
+        <h2>Prepariamo insieme <em>il tuo messaggio</em></h2>
+        <p class="co-comp__lead">Scegli cosa desideri e quando preferisci: il messaggio si scrive da solo. Poi ti basta premere invia.</p>
+
+        <div class="co-step-f">
+          <span><i>1</i>Cosa desideri</span>
+          <div class="co-chips-f" data-group="tratt">
+            <button class="co-chip-f is-on" type="button" data-v="">Non lo so, consigliami tu</button>
+            <button class="co-chip-f" type="button" data-v="un massaggio decontratturante">Decontratturante</button>
+            <button class="co-chip-f" type="button" data-v="un massaggio rilassante">Rilassante</button>
+            <button class="co-chip-f" type="button" data-v="un massaggio sportivo">Sportivo</button>
+            <button class="co-chip-f" type="button" data-v="un massaggio prenatale">Prenatale</button>
+            <button class="co-chip-f" type="button" data-v="un massaggio di coppia">Di coppia</button>
+            <button class="co-chip-f" type="button" data-v="un trattamento viso">Viso</button>
+          </div>
+        </div>
+
+        <div class="co-step-f">
+          <span><i>2</i>Quando preferisci</span>
+          <div class="co-chips-f" data-group="quando">
+            <button class="co-chip-f is-on" type="button" data-v="">Quando capita</button>
+            <button class="co-chip-f" type="button" data-v="di mattina">Mattina</button>
+            <button class="co-chip-f" type="button" data-v="di pomeriggio">Pomeriggio</button>
+            <button class="co-chip-f" type="button" data-v="in tardo pomeriggio o sera">Sera</button>
+            <button class="co-chip-f" type="button" data-v="nel weekend">Weekend</button>
+          </div>
+        </div>
+
+        <div class="co-step-f">
+          <label for="coNome"><i>3</i>Come ti chiami</label>
+          <input class="co-input" id="coNome" type="text" placeholder="Il tuo nome" autocomplete="given-name" maxlength="40">
+        </div>
+
+        <button class="co-send" id="coSend" type="button">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+          Invia su WhatsApp
+        </button>
+        <p class="co-note">Il sito non salva nessun dato: il messaggio si apre su WhatsApp e lo invii tu.</p>
+      </div>
+
+      <div class="co-phone" aria-hidden="true">
+        <div class="co-phone__scr">
+          <div class="co-phone__bar">
+            <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" fill="#EE9370"/><circle cx="24" cy="24" r="17.5" fill="#C9472E"/><circle cx="24" cy="24" r="13" fill="#F4A88A"/><circle cx="24" cy="24" r="8.5" fill="#93D3B8"/></svg>
+            <div><b>Cuore Olistico</b><small>studio olistico &middot; Conegliano</small></div>
+          </div>
+          <div class="co-phone__chat">
+            <div class="co-bub co-bub--in">Ciao! &#127807; Scrivimi pure, ti rispondo appena finisco il trattamento in corso.<small>09:41</small></div>
+            <div class="co-bub co-bub--out" id="coBubble"><span id="coMsg"></span><small>adesso &#10003;&#10003;</small></div>
+          </div>
+          <div class="co-phone__type"><span>Messaggio</span><i><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5 21 12 3 3.5 3 10l12 2-12 2z"/></svg></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOVE SONO ===== -->
+  <section class="co-map" id="dove-sono">
+    <div class="co-cw">
+      <div class="co-map__grid">
+        <div class="co-map__info">
+          <span class="co-cey">Dove sono</span>
+          <h2>Il mio studio, <em>a Conegliano</em></h2>
+          <dl>
+            <div><dt>Indirizzo</dt><dd>Via Immacolata di Lourdes 29/A<br>31015 Conegliano (TV)</dd></div>
+            <div><dt>Orari</dt><dd>Solo su appuntamento</dd></div>
+            <div><dt>Telefono e WhatsApp</dt><dd><a href="tel:+393272677850">366 414 9205</a></dd></div>
+          </dl>
+          <div class="co-map__links">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Immacolata+di+Lourdes+29%2FA+31015+Conegliano+TV" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 11 18-8-8 18-2-8-8-2Z"/></svg>Google Maps</a>
+            <a href="https://maps.apple.com/?daddr=Via+Immacolata+di+Lourdes+29%2FA,+31015+Conegliano+TV" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 11 18-8-8 18-2-8-8-2Z"/></svg>Apple Mappe</a>
+          </div>
+        </div>
+
+        <div class="co-map__box" id="coMapBox">
+          <div class="co-map__ph" id="coMapPh">
+            <svg class="co-map__lines" viewBox="0 0 600 500" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+              <path d="M-20 110 C140 150 260 70 380 130 S560 200 640 150" stroke="#E8D9E2" stroke-width="20"/>
+              <path d="M90 -20 C120 150 60 320 150 520" stroke="#E8D9E2" stroke-width="13"/>
+              <path d="M-20 360 C170 310 320 400 640 320" stroke="#E8D9E2" stroke-width="15"/>
+              <path d="M450 -20 C430 170 500 320 460 520" stroke="#E8D9E2" stroke-width="11"/>
+              <path d="M230 -20 L290 520" stroke="#EFE6EA" stroke-width="6"/>
+              <circle cx="300" cy="230" r="150" stroke="#748B77" stroke-opacity=".25" stroke-dasharray="4 8"/>
+            </svg>
+            <div class="co-map__pin"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="23" fill="#EE9370"/><circle cx="24" cy="24" r="17.5" fill="#C9472E"/><circle cx="24" cy="24" r="13" fill="#F4A88A"/><circle cx="24" cy="24" r="8.5" fill="#93D3B8"/></svg></div>
+            <button class="co-map__btn" id="coMapBtn" type="button">Mostra la mappa interattiva</button>
+            <p>La mappa &egrave; fornita da Google e viene caricata solo se la apri tu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOMANDE ===== -->
+  <section class="co-faq">
+    <div class="co-cw co-faq__grid">
+      <div class="co-faq__side">
+        <span class="co-cey">Domande frequenti</span>
+        <h2>Prima di <em>venire da me</em></h2>
+        <p>Hai un dubbio che non trovi qui? Scrivimi, rispondo volentieri.</p>
+      </div>
+      <div>
+        <details open>
+          <summary>Come prenoto un trattamento?</summary>
+          <p>Scrivimi su WhatsApp o chiamami al 366 414 9205. Insieme scegliamo il trattamento, la durata e l'orario pi&ugrave; comodo per te.</p>
+        </details>
+        <details>
+          <summary>Posso spostare o disdire un appuntamento?</summary>
+          <p>Certo, avvisami appena puoi. [Da confermare con la titolare: preavviso minimo richiesto per la disdetta.]</p>
+        </details>
+        <details>
+          <summary>Cosa devo portare?</summary>
+          <p>Niente di particolare: in studio trovi tutto il necessario. Ti consiglio solo di arrivare qualche minuto prima, per iniziare con calma.</p>
+        </details>
+        <details>
+          <summary>Non so quale massaggio scegliere, mi aiuti?</summary>
+          <p>Certo. Raccontami come ti senti e di cosa hai bisogno: ti consiglio io il trattamento pi&ugrave; adatto.</p>
+        </details>
+        <details>
+          <summary>Posso regalare un trattamento?</summary>
+          <p>S&igrave;, un massaggio &egrave; un regalo che fa sempre piacere. Scrivimi e prepariamo insieme il regalo, anche come pacchetto di pi&ugrave; sedute.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('coCt');
+  if(!root) return;
+
+  // compositore messaggio WhatsApp
+  var state={tratt:'',quando:''}, nome=document.getElementById('coNome'),
+      out=document.getElementById('coMsg'), bub=document.getElementById('coBubble');
+  function build(){
+    var n=nome.value.trim();
+    var m='Ciao!'+(n?' Sono '+n+'.':'')+'\n';
+    var q=state.quando ? ' '+state.quando : '';
+    m+= state.tratt ? 'Vorrei prenotare '+state.tratt+q+'.' : 'Vorrei prenotare un trattamento'+q+': mi consigli tu quale?';
+    m+='\nChe disponibilità hai?';
+    return m;
+  }
+  function render(){
+    out.textContent=build();
+    bub.classList.add('is-pop'); setTimeout(function(){bub.classList.remove('is-pop')},180);
+  }
+  root.querySelectorAll('.co-chips-f').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('.co-chip-f'); if(!b) return;
+      g.querySelectorAll('.co-chip-f').forEach(function(x){x.classList.remove('is-on')});
+      b.classList.add('is-on'); state[g.dataset.group]=b.dataset.v; render();
+    });
+  });
+  nome.addEventListener('input',render);
+  document.getElementById('coSend').addEventListener('click',function(){
+    window.open('https://wa.me/393272677850?text='+encodeURIComponent(build()),'_blank','noopener');
+  });
+  render();
+
+  // mappa Google caricata solo dopo il clic (privacy)
+  document.getElementById('coMapBtn').addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.google.com/maps?q=Via+Immacolata+di+Lourdes+29%2FA,+31015+Conegliano+TV&z=16&output=embed';
+    f.title='Mappa dello studio Cuore Olistico'; f.loading='lazy'; f.referrerPolicy='no-referrer-when-downgrade';
+    var box=document.getElementById('coMapBox'); box.appendChild(f);
+    document.getElementById('coMapPh').remove();
+  });
+})();
+</script>
+
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="co-f">
+  <!-- invito finale -->
+  <section class="co-f__cta" aria-labelledby="coFootTitle">
+    <svg class="co-f__rings" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <circle cx="100" cy="100" r="98" stroke="#EE9370" stroke-width=".8"/>
+      <circle cx="100" cy="100" r="80" stroke="#C9472E" stroke-width=".8"/>
+      <circle cx="100" cy="100" r="62" stroke="#F4A88A" stroke-width=".8"/>
+      <circle cx="100" cy="100" r="44" stroke="#45846E" stroke-width=".8"/>
+      <circle cx="100" cy="100" r="26" fill="#93D3B8" fill-opacity=".45"/>
+    </svg>
+    <div class="co-f__cta-in">
+      <div>
+        <span class="co-f__eyebrow">Su appuntamento a Conegliano</span>
+        <h2 class="co-f__title" id="coFootTitle">Concediti un'ora<br><em>solo per te.</em></h2>
+      </div>
+      <div>
+        <p class="co-f__lead">Scrivimi su WhatsApp o chiamami: troviamo insieme il trattamento e l'orario giusti per te. Rispondo personalmente a ogni messaggio.</p>
+        <div class="co-f__actions">
+          <a class="co-f__btn co-f__btn--wa" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio%20%F0%9F%8C%BF" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+            Prenota su WhatsApp
+          </a>
+          <a class="co-f__btn co-f__btn--tel" href="tel:+393272677850">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+            366 414 9205
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- corpo -->
+  <div class="co-f__main">
+    <div class="co-f__grid">
+      <div class="co-f__brand">
+        <a class="co-f__logo" href="../" aria-label="Cuore Olistico, home">
+          <svg viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" fill="#EE9370"/><circle cx="24" cy="24" r="17.5" fill="#C9472E"/>
+            <circle cx="24" cy="24" r="13" fill="#F4A88A"/><circle cx="24" cy="24" r="8.5" fill="#93D3B8"/>
+          </svg>
+          <span><b>Cuore Olistico</b><i>studio olistico</i></span>
+        </a>
+        <p class="co-f__quote">&#171;La tua piccola oasi di pace, per staccare la spina dalla quotidianit&#224;.&#187;</p>
+        <div class="co-f__social">
+          <!-- inserire i link ai profili reali -->
+          <a href="#" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.8c0-.8.5-1 1-1h2V2.2L14.3 2C11.4 2 10.5 4 10.5 5.9v2.6H8V12h2.5v10H14V12h2.8l.4-3.5H14Z"/></svg>
+          </a>
+          <a href="https://wa.me/393272677850" aria-label="WhatsApp" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="co-f__col" aria-label="Massaggi">
+        <h3>Massaggi</h3>
+        <ul>
+          <li><a href="../trattamenti/#decontratturante">Massaggio decontratturante</a></li>
+          <li><a href="../trattamenti/#rilassante">Massaggio rilassante</a></li>
+          <li><a href="../trattamenti/#sportivo">Sportivo olistico</a></li>
+          <li><a href="../trattamenti/#prenatale">Massaggio prenatale</a></li>
+          <li><a href="../trattamenti/#lomi-lomi">Lomi-lomi</a></li>
+          <li><a href="../trattamenti/#coppia-pacchetti">Massaggio di coppia</a></li>
+        </ul>
+      </nav>
+
+      <nav class="co-f__col" aria-label="Esplora">
+        <h3>Esplora</h3>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../trattamenti/">Tutti i trattamenti</a></li>
+          <li><a href="../trattamenti/#coppia-pacchetti">Pacchetti su misura</a></li>
+          <li><a href="../#chi-sono">Chi sono</a></li>
+          <li><a href="../contatti/">Contatti e mappa</a></li>
+        </ul>
+      </nav>
+
+      <div class="co-f__col">
+        <h3>Lo studio</h3>
+        <div class="co-f__info">
+          <div><small>Indirizzo</small>
+            <a href="https://www.google.com/maps/search/?api=1&query=Via+Immacolata+di+Lourdes+29%2FA+31015+Conegliano+TV" target="_blank" rel="noopener">Via Immacolata di Lourdes 29/A<br>31015 Conegliano (TV)</a></div>
+          <div><small>Telefono e WhatsApp</small><a href="tel:+393272677850">366 414 9205</a></div>
+          <span class="co-f__badge">Ricevo solo su appuntamento</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="co-f__word" aria-hidden="true">Cuore Olistico</div>
+  </div>
+
+  <div class="co-f__bottom">
+    <div class="co-f__bottom-in">
+      <span>&#169; <span id="coYear">2026</span> Cuore Olistico &#183; Studio olistico di massaggi a Conegliano &#183; P.IVA [da inserire]</span>
+      <span class="co-f__legal">
+        <a href="../privacy-policy/">Privacy policy</a>
+        <a href="../cookie-policy/">Cookie policy</a>
+        <span class="co-f__credit">Sito di <a href="https://zyloos.org" target="_blank" rel="noopener">Zylo OS</a></span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- Dati strutturati per la SEO locale (Google) -->
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HealthAndBeautyBusiness",
+  "name":"Cuore Olistico",
+  "description":"Studio olistico di massaggi a Conegliano. Massaggi decontratturanti, rilassanti, sportivi, prenatali, di coppia e trattamenti olistici personalizzati, su appuntamento.",
+  "telephone":"+39 366 414 9205",
+  "address":{"@type":"PostalAddress","streetAddress":"Via Immacolata di Lourdes 29/A","postalCode":"31015","addressLocality":"Conegliano","addressRegion":"TV","addressCountry":"IT"},
+  "areaServed":"Conegliano",
+  "priceRange":"\u20ac\u20ac"
+}
+</script>
+
+<!-- ======================= JS ======================= -->
+<script>
+(function(){
+  var h=document.getElementById('coHeader'), b=document.getElementById('coBurger'),
+      m=document.getElementById('coMenu'), d=document.getElementById('coDock');
+  if(!h) return;
+  function onScroll(){
+    var y=window.scrollY||0;
+    h.classList.toggle('is-scrolled', y>40);
+    if(d) d.classList.toggle('is-visible', y>260);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  function setMenu(open){
+    m.classList.toggle('is-open', open); m.setAttribute('aria-hidden', !open);
+    b.setAttribute('aria-expanded', open); b.setAttribute('aria-label', open?'Chiudi il menu':'Apri il menu');
+    b.classList.toggle('is-open', open); document.body.classList.toggle('co-lock', open);
+  }
+  b.addEventListener('click', function(){ setMenu(!m.classList.contains('is-open')); });
+  m.addEventListener('click', function(e){ if(e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') setMenu(false); });
+
+  // evidenzia la voce della pagina corrente
+  var p=location.pathname.replace(/\/+$/,'/');
+  document.querySelectorAll('.co-link').forEach(function(a){
+    var href=a.getAttribute('href');
+    if(href.indexOf('#')===-1 && href===p) a.classList.add('is-active');
+  });
+})();
+document.getElementById('coYear').textContent=new Date().getFullYear();
+</script>
+
+</body>
+</html>
