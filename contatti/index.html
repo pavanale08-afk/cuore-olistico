@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Contatti | Cuore Olistico</title>
+<style>body{margin:0;background:#F2EFE4}</style>
+</head>
+<body>
+<style>
+.co-scope,.co-f{
+  --crema:#F2EFE4; --crema-2:#F8F6EF; --malva:#E8D9E2; --salvia:#748B77;
+  --verde:#45846E; --verde-scuro:#2F4A3F; --terra:#CA6841; --terra-scuro:#B4552F; --bruno:#392B2E;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  font-family:var(--sans); color:var(--bruno); -webkit-font-smoothing:antialiased;
+}
+.co-scope *,.co-scope *::before,.co-scope *::after,.co-f *,.co-f *::before,.co-f *::after{box-sizing:border-box}
+.co-scope a,.co-f a{color:inherit;text-decoration:none}
+.co-scope svg,.co-f svg{display:block}
+
+/* ===== HEADER ===== */
+.co-scope{--top:38px;--bar:84px;--bar-s:68px}
+.co-h{position:fixed;inset:0 0 auto 0;z-index:999}
+.co-h-spacer{height:calc(var(--top) + var(--bar))}
+.co-top{height:var(--top);background:var(--verde-scuro);color:#E3DED0;font-size:13px;overflow:hidden;transition:height .3s,opacity .2s}
+.co-top__in{max-width:1200px;height:100%;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.co-top__r{display:flex;gap:28px}
+.co-top a:hover{color:#fff}
+.co-bar{height:var(--bar);background:rgba(242,239,228,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(57,43,46,.07);transition:height .3s,box-shadow .3s}
+.co-bar__in{max-width:1200px;height:100%;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
+.co-nav{display:flex;align-items:center;gap:32px}
+.co-nav--r{justify-content:flex-end;gap:20px}
+.co-link{font-size:15px;font-weight:500;padding:8px 0;border-bottom:1.5px solid transparent;transition:color .2s,border-color .2s}
+.co-link:hover,.co-link.is-active{color:var(--verde);border-color:var(--verde)}
+.co-logo{display:flex;flex-direction:column;align-items:center;gap:5px;line-height:1}
+.co-logo__mark{width:44px;height:44px;transition:width .3s,height .3s}
+.co-logo__txt{display:flex;flex-direction:column;align-items:center;gap:5px}
+.co-logo__name{font-weight:600;font-size:14px;letter-spacing:.2em;color:var(--verde);text-transform:uppercase}
+.co-logo__sub{font-family:var(--serif);font-style:italic;font-size:13px;letter-spacing:.28em;color:var(--salvia)}
+.co-ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(69,132,110,.35);color:var(--verde);transition:background .2s,color .2s}
+.co-ico svg{width:18px;height:18px}
+.co-ico:hover{background:var(--verde);color:#fff}
+.co-btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;background:var(--terra);color:#fff !important;font-weight:600;font-size:15px;transition:background .2s}
+.co-btn svg{width:19px;height:19px}
+.co-btn:hover{background:var(--terra-scuro)}
+/* pulsante menu (protetto dagli stili del tema) */
+.co-scope button.co-burger,.co-scope button.co-burger:hover,.co-scope button.co-burger:focus{display:none;width:48px;height:48px;padding:0;border:0;border-radius:50%;background:var(--malva);color:var(--bruno);position:relative;cursor:pointer;box-shadow:none}
+.co-scope button.co-burger:focus{outline:none}
+.co-scope button.co-burger:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
+.co-burger span{position:absolute;left:14px;right:14px;height:2px;border-radius:2px;background:var(--bruno);transition:transform .3s,opacity .2s,top .3s}
+.co-burger span:nth-child(1){top:18px}.co-burger span:nth-child(2){top:23px}.co-burger span:nth-child(3){top:28px}
+.co-burger.is-open span:nth-child(1){top:23px;transform:rotate(45deg)}
+.co-burger.is-open span:nth-child(2){opacity:0}
+.co-burger.is-open span:nth-child(3){top:23px;transform:rotate(-45deg)}
+.co-h.is-scrolled .co-top{height:0;opacity:0}
+.co-h.is-scrolled .co-bar{height:var(--bar-s);box-shadow:0 8px 24px -18px rgba(57,43,46,.4)}
+.co-h.is-scrolled .co-logo__mark{width:36px;height:36px}
+
+/* menu telefono */
+.co-menu{position:fixed;inset:0;z-index:998;background:var(--crema);padding:calc(var(--bar-s) + 40px) 26px 120px;display:flex;flex-direction:column;gap:40px;overflow:auto;
+  opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
+.co-menu.is-open{opacity:1;visibility:visible;transition-delay:0s}
+.co-menu ul{list-style:none;margin:0;padding:0}
+.co-menu li a{display:block;padding:14px 0;border-bottom:1px solid rgba(57,43,46,.1);font-family:var(--serif);font-size:30px;line-height:1.2}
+.co-menu li a:hover{color:var(--verde)}
+.co-menu__info{display:grid;gap:8px;font-size:16px;line-height:1.6;color:rgba(57,43,46,.75)}
+.co-menu .co-btn{align-self:stretch;justify-content:center;height:54px}
+
+/* barra azioni fissa (telefono) */
+.co-dock{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:1000;padding:7px;border-radius:999px;background:rgba(47,74,63,.95);
+  box-shadow:0 14px 34px -14px rgba(0,0,0,.45);grid-template-columns:1fr 1.3fr;gap:7px;transform:translateY(140%);transition:transform .4s ease}
+.co-dock.is-visible{transform:none}
+.co-dock a{height:50px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15px;color:#fff}
+.co-dock a svg{width:18px;height:18px}
+.co-dock__call{background:rgba(255,255,255,.1)}
+.co-dock__wa{background:var(--terra)}
+body.co-lock{overflow:hidden}
+body.co-lock .co-dock{transform:translateY(140%)}
+
+@media (max-width:1100px){
+  .co-bar__in{grid-template-columns:auto 1fr auto}
+  .co-nav--l,.co-nav--r .co-link{display:none}
+  .co-logo{flex-direction:row;gap:12px}
+  .co-logo__txt{align-items:flex-start}
+  .co-nav--r{grid-column:3}
+  .co-scope button.co-burger,.co-scope button.co-burger:hover,.co-scope button.co-burger:focus{display:block}
+}
+@media (max-width:767px){
+  .co-scope{--bar:70px;--bar-s:64px}
+  .co-top{display:none}
+  .co-h-spacer{height:var(--bar)}
+  .co-bar__in{padding:0 20px}
+  .co-nav--r .co-ico,.co-nav--r .co-btn{display:none}
+  .co-logo__mark{width:38px;height:38px}
+  .co-logo__name{font-size:13px;letter-spacing:.16em}
+  .co-logo__sub{font-size:12px}
+  .co-dock{display:grid}
+}
+
+/* ===== FOOTER ===== */
+.co-f__cta{background:var(--malva);padding:104px 0}
+.co-f__cta-in{max-width:1200px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end}
+.co-f__cta small{display:block;font-size:15px;color:var(--verde);margin-bottom:16px}
+.co-f__title{font-family:var(--serif);font-weight:500;font-size:clamp(38px,4.6vw,60px);line-height:1.08;margin:0;color:var(--bruno)}
+.co-f__lead{font-size:17px;line-height:1.75;max-width:440px;margin:0 0 28px;color:rgba(57,43,46,.8)}
+.co-f__actions{display:flex;flex-wrap:wrap;gap:12px}
+.co-f__btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:54px;padding:0 26px;border-radius:999px;font-weight:600;font-size:16px;transition:background .2s,color .2s,border-color .2s}
+.co-f__btn svg{width:20px;height:20px}
+.co-f__btn--wa{background:var(--terra);color:#fff !important}
+.co-f__btn--wa:hover{background:var(--terra-scuro)}
+.co-f__btn--tel{border:1.5px solid rgba(57,43,46,.25)}
+.co-f__btn--tel:hover{border-color:var(--verde);color:var(--verde)}
+
+.co-f__main{background:var(--verde-scuro);color:#E3DED0;padding:80px 0 64px}
+.co-f__grid{max-width:1200px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:48px}
+.co-f__brand{display:flex;flex-direction:column;gap:22px}
+.co-f__logo{display:flex;align-items:center;gap:14px}
+.co-f__logo svg{width:48px;height:48px}
+.co-f__logo b{display:block;font-weight:600;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.co-f__logo i{display:block;margin-top:5px;font-family:var(--serif);font-size:14px;letter-spacing:.28em;color:#B9CDBB}
+.co-f__brand p{margin:0;max-width:300px;font-size:15px;line-height:1.7;color:#C3CFC5}
+.co-f__social{display:flex;gap:10px}
+.co-f__social a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(233,228,214,.25);transition:background .2s,color .2s}
+.co-f__social a:hover{background:#E9E4D6;color:var(--verde-scuro)}
+.co-f__social svg{width:18px;height:18px}
+.co-f__col h3{font-family:var(--sans);font-size:14px;font-weight:600;color:#fff;margin:6px 0 18px}
+.co-f__col ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:15px;color:#C3CFC5}
+.co-f__col a:hover{color:#fff}
+.co-f__info{display:grid;gap:16px;font-size:15px;line-height:1.6;color:#C3CFC5}
+.co-f__info small{display:block;font-size:13px;color:#93A898}
+.co-f__info a{color:#E9E4D6;border-bottom:1px solid rgba(233,228,214,.3)}
+.co-f__bottom{background:#263D33}
+.co-f__bottom-in{max-width:1200px;margin:0 auto;padding:20px 32px;display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between;font-size:13px;color:#A3B5A8}
+.co-f__legal{display:flex;flex-wrap:wrap;gap:8px 22px}
+.co-f__legal a:hover{color:#fff}
+
+@media (max-width:1024px){
+  .co-f__cta-in{grid-template-columns:1fr;gap:28px;align-items:start}
+  .co-f__grid{grid-template-columns:1fr 1fr;gap:44px 32px}
+  .co-f__brand{grid-column:1/-1}
+}
+@media (max-width:767px){
+  .co-f__cta{padding:80px 0}
+  .co-f__cta-in{padding:0 22px}
+  .co-f__title{font-size:36px}
+  .co-f__lead{font-size:16px;line-height:1.8}
+  .co-f__actions{flex-direction:column}
+  .co-f__main{padding:64px 0 48px}
+  .co-f__grid{padding:0 22px;grid-template-columns:1fr;gap:40px}
+  .co-f__bottom-in{padding:22px 22px 100px;flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){.co-scope *,.co-f *{transition:none !important}}
+</style>
+
+<!-- ======================= HEADER ======================= -->
+<div class="co-scope">
+  <header class="co-h" id="coHeader">
+    <div class="co-top">
+      <div class="co-top__in">
+        <span>Ricevo su appuntamento</span>
+        <div class="co-top__r">
+          <a href="https://www.google.com/maps/search/?api=1&query=Via+Immacolata+di+Lourdes+29%2FA+31015+Conegliano+TV" target="_blank" rel="noopener">Via Immacolata di Lourdes 29/A, Conegliano</a>
+          <a href="tel:+393272677850">366 414 9205</a>
+        </div>
+      </div>
+    </div>
+    <div class="co-bar">
+      <div class="co-bar__in">
+        <nav class="co-nav co-nav--l" aria-label="Menu principale">
+          <a class="co-link" href="../trattamenti/">Trattamenti</a>
+          <a class="co-link" href="../trattamenti/#coppia-pacchetti">Coppia e pacchetti</a>
+          <a class="co-link" href="../#chi-sono">Chi sono</a>
+        </nav>
+        <a class="co-logo" href="../" aria-label="Cuore Olistico, home">
+          <!-- LOGO SEGNAPOSTO: sostituire con il file originale -->
+          <svg class="co-logo__mark" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="23" fill="#EE9370"/><circle cx="24" cy="24" r="17.5" fill="#C9472E"/>
+            <circle cx="24" cy="24" r="13" fill="#F4A88A"/><circle cx="24" cy="24" r="8.5" fill="#93D3B8"/>
+          </svg>
+          <span class="co-logo__txt"><span class="co-logo__name">Cuore Olistico</span><span class="co-logo__sub">studio olistico</span></span>
+        </a>
+        <div class="co-nav co-nav--r">
+          <a class="co-link" href="../contatti/">Contatti</a>
+          <a class="co-ico" href="tel:+393272677850" aria-label="Chiama">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+          </a>
+          <a class="co-btn" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+            Prenota su WhatsApp
+          </a>
+          <button class="co-burger" id="coBurger" type="button" aria-label="Apri il menu" aria-expanded="false" aria-controls="coMenu"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="co-h-spacer"></div>
+
+  <div class="co-menu" id="coMenu" aria-hidden="true">
+    <ul>
+      <li><a href="../">Home</a></li>
+      <li><a href="../trattamenti/">Trattamenti e prezzi</a></li>
+      <li><a href="../trattamenti/#coppia-pacchetti">Coppia e pacchetti</a></li>
+      <li><a href="../#chi-sono">Chi sono</a></li>
+      <li><a href="../contatti/">Contatti</a></li>
+    </ul>
+    <div class="co-menu__info">
+      <span>Via Immacolata di Lourdes 29/A, Conegliano</span>
+      <a href="tel:+393272677850">Tel. 366 414 9205</a>
+      <span>Ricevo su appuntamento</span>
+    </div>
+    <a class="co-btn" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio" target="_blank" rel="noopener">Prenota su WhatsApp</a>
+  </div>
+
+  <div class="co-dock" id="coDock">
+    <a class="co-dock__call" href="tel:+393272677850">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Chiama
+    </a>
+    <a class="co-dock__wa" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>Prenota
+    </a>
+  </div>
+</div>
+
+<style>
+.co-ct{
+  --crema:#F2EFE4; --crema-2:#F8F6EF; --malva:#E8D9E2; --salvia:#748B77;
+  --verde:#45846E; --verde-scuro:#2F4A3F; --terra:#CA6841; --terra-scuro:#B4552F; --bruno:#392B2E;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  font-family:var(--sans); color:var(--bruno); background:var(--crema); -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+.co-ct *,.co-ct *::before,.co-ct *::after{box-sizing:border-box}
+.co-ct a{color:inherit;text-decoration:none}
+.co-ct svg{display:block}
+.co-ct h1,.co-ct h2,.co-ct h3{font-family:var(--serif);font-weight:500;margin:0;color:var(--bruno);letter-spacing:-.005em}
+.co-ct p{margin:0}
+/* neutralizza gli stili pulsante del tema */
+.co-ct button,.co-ct button:hover,.co-ct button:focus,.co-ct button:active{font:inherit;color:inherit;background:none;border:0;border-radius:0;padding:0;margin:0;box-shadow:none;text-transform:none;white-space:normal;cursor:pointer}
+.co-ct button:focus{outline:none}
+.co-ct button:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
+.co-ct .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.co-ct .h2{font-size:clamp(32px,3.8vw,46px);line-height:1.1}
+.co-ct .lead{font-size:18px;line-height:1.75;color:rgba(57,43,46,.8)}
+
+/* INTESTAZIONE + CANALI */
+.co-ct .top{padding:72px 0 96px}
+.co-ct .top h1{font-size:clamp(42px,5.4vw,72px);line-height:1.05}
+.co-ct .top .lead{max-width:540px;margin-top:22px}
+.co-ct .ways{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px;margin-top:48px}
+.co-ct .way{border-radius:22px;padding:28px;background:var(--crema-2);display:flex;flex-direction:column;gap:22px;transition:background .2s}
+.co-ct .way:hover{background:#fff}
+.co-ct .way__ic{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--malva);color:var(--verde)}
+.co-ct .way__ic svg{width:22px;height:22px}
+.co-ct .way small{display:block;font-size:14px;opacity:.7}
+.co-ct .way b{display:block;font-family:var(--serif);font-weight:500;font-size:25px;line-height:1.25;margin-top:4px}
+.co-ct .way--wa{background:var(--terra);color:#fff}
+.co-ct .way--wa:hover{background:var(--terra-scuro)}
+.co-ct .way--wa .way__ic{background:rgba(255,255,255,.18);color:#fff}
+
+/* MESSAGGIO */
+.co-ct .msg{padding:0 0 104px}
+.co-ct .msg__box{background:var(--crema-2);border-radius:28px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.co-ct .msg .lead{margin-top:16px;max-width:460px}
+.co-ct .field{margin-top:30px}
+.co-ct .field > span,.co-ct .field > label{display:block;font-size:15px;font-weight:600;margin-bottom:12px}
+.co-ct .chips{display:flex;flex-wrap:wrap;gap:8px}
+.co-ct button.chip{height:42px;padding:0 18px;border-radius:999px;border:1.5px solid rgba(57,43,46,.16);font-size:15px;color:var(--bruno);transition:background .2s,border-color .2s,color .2s}
+.co-ct button.chip:hover{border-color:var(--verde)}
+.co-ct button.chip.is-on,.co-ct button.chip.is-on:hover{background:var(--verde);border-color:var(--verde);color:#fff}
+.co-ct .input{width:100%;max-width:400px;height:52px;padding:0 18px;border-radius:14px;border:1.5px solid rgba(57,43,46,.16);background:#fff;font:inherit;font-size:16px;color:var(--bruno);outline:none}
+.co-ct .input:focus{border-color:var(--verde)}
+.co-ct .preview{position:sticky;top:120px}
+.co-ct .preview small{display:block;font-size:14px;color:rgba(57,43,46,.6);margin-bottom:12px}
+.co-ct .bubble{background:#DCF3D6;border-radius:18px 18px 4px 18px;padding:18px 20px;font-size:16px;line-height:1.6;white-space:pre-line;min-height:120px}
+.co-ct button.send{margin-top:20px;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;height:56px;border-radius:999px;background:var(--terra);color:#fff;font-weight:600;font-size:16px;transition:background .2s}
+.co-ct button.send:hover{background:var(--terra-scuro)}
+.co-ct button.send svg{width:20px;height:20px}
+.co-ct .note{margin-top:12px;font-size:13px;line-height:1.55;color:rgba(57,43,46,.55)}
+
+/* DOVE SONO */
+.co-ct .map{padding:0 0 104px;scroll-margin-top:100px}
+.co-ct .map__grid{display:grid;grid-template-columns:.85fr 1.15fr;border-radius:28px;overflow:hidden;background:var(--verde-scuro);color:#E9E4D6}
+.co-ct .map__info{padding:52px 48px;display:flex;flex-direction:column;gap:26px}
+.co-ct .map__info h2{color:#F2EFE4}
+.co-ct .map__info dl{margin:0;display:grid;gap:20px}
+.co-ct .map__info dt{font-size:14px;color:#A9BBAE}
+.co-ct .map__info dd{margin:4px 0 0;font-family:var(--serif);font-size:22px;line-height:1.4;color:#F2EFE4}
+.co-ct .map__links{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.co-ct .map__links a{display:inline-flex;align-items:center;height:46px;padding:0 20px;border-radius:999px;border:1.5px solid rgba(233,228,214,.3);font-size:15px;font-weight:600;transition:background .2s,color .2s}
+.co-ct .map__links a:hover{background:#F2EFE4;color:var(--verde-scuro)}
+.co-ct .map__box{position:relative;min-height:480px;background:var(--crema-2)}
+.co-ct .map__box iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.co-ct .map__ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px;text-align:center}
+.co-ct .map__ph svg.lines{position:absolute;inset:0;width:100%;height:100%}
+.co-ct .map__pin{position:relative;width:64px;height:64px}
+.co-ct button.map__btn{position:relative;height:50px;padding:0 24px;border-radius:999px;background:var(--bruno);color:#F2EFE4;font-weight:600;font-size:15px;transition:background .2s}
+.co-ct button.map__btn:hover{background:var(--verde)}
+.co-ct .map__ph p{position:relative;max-width:300px;font-size:13px;line-height:1.55;color:rgba(57,43,46,.65)}
+
+/* DOMANDE */
+.co-ct .faq{padding:0 0 112px}
+.co-ct .faq__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:start}
+.co-ct .faq__side p{margin-top:16px}
+.co-ct details{border-bottom:1px solid rgba(57,43,46,.14)}
+.co-ct details:first-child{border-top:1px solid rgba(57,43,46,.14)}
+.co-ct summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-family:var(--serif);font-size:22px;line-height:1.3}
+.co-ct summary::-webkit-details-marker{display:none}
+.co-ct summary::after{content:"+";flex:none;font-family:var(--sans);font-size:24px;font-weight:300;color:rgba(57,43,46,.5);transition:transform .25s}
+.co-ct details[open] summary{color:var(--verde)}
+.co-ct details[open] summary::after{transform:rotate(45deg)}
+.co-ct details p{padding:0 32px 26px 0;font-size:17px;line-height:1.75;color:rgba(57,43,46,.8)}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  .co-ct .ways{grid-template-columns:1fr 1fr}
+  .co-ct .way--wa{grid-column:1/-1}
+  .co-ct .msg__box,.co-ct .map__grid,.co-ct .faq__grid{grid-template-columns:1fr}
+  .co-ct .msg__box{gap:40px}
+  .co-ct .preview{position:static}
+  .co-ct .faq__grid{gap:32px}
+  .co-ct .map__box{min-height:380px}
+}
+@media (max-width:767px){
+  .co-ct .wrap{padding:0 22px}
+  .co-ct .lead{font-size:17px;line-height:1.8}
+  .co-ct .top{padding:44px 0 80px}
+  .co-ct .top h1{font-size:40px}
+  .co-ct .ways{grid-template-columns:1fr;gap:12px;margin-top:36px}
+  .co-ct .way{flex-direction:row;align-items:center;gap:18px;padding:22px}
+  .co-ct .way b{font-size:21px}
+  .co-ct .h2{font-size:32px}
+  .co-ct .msg{padding-bottom:80px}
+  .co-ct .msg__box{padding:36px 22px;border-radius:24px}
+  .co-ct .field{margin-top:28px}
+  .co-ct .map{padding-bottom:80px}
+  .co-ct .map__grid{border-radius:24px}
+  .co-ct .map__info{padding:36px 24px 40px}
+  .co-ct .map__box{min-height:320px}
+  .co-ct .faq{padding-bottom:88px}
+  .co-ct summary{font-size:19px;padding:22px 0}
+  .co-ct details p{padding-right:0;font-size:16px;line-height:1.8}
+}
+@media (prefers-reduced-motion:reduce){.co-ct *{transition:none !important}}
+</style>
+
+<div class="co-ct" id="coCt">
+
+  <section class="top">
+    <div class="wrap">
+      <h1>Contatti</h1>
+      <p class="lead">Il modo pi&ugrave; veloce per prenotare &egrave; scrivermi su WhatsApp. Rispondo io, appena finisco con chi &egrave; in studio.</p>
+      <div class="ways">
+        <a class="way way--wa" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio" target="_blank" rel="noopener">
+          <span class="way__ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg></span>
+          <span><small>WhatsApp</small><b>Scrivimi un messaggio</b></span>
+        </a>
+        <a class="way" href="tel:+393272677850">
+          <span class="way__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></span>
+          <span><small>Telefono</small><b>366 414 9205</b></span>
+        </a>
+        <a class="way" href="#dove-sono">
+          <span class="way__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5a7 7 0 1 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <span><small>Studio</small><b>Via Immacolata di Lourdes 29/A</b></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="msg">
+    <div class="wrap">
+      <div class="msg__box">
+        <div>
+          <h2 class="h2">Prenota con un messaggio</h2>
+          <p class="lead">Scegli cosa ti interessa e quando preferisci: il messaggio si scrive da solo, tu devi solo inviarlo.</p>
+          <div class="field">
+            <span>Cosa ti interessa</span>
+            <div class="chips" data-group="tratt">
+              <button class="chip is-on" type="button" data-v="">Non so, consigliami</button>
+              <button class="chip" type="button" data-v="un massaggio decontratturante">Decontratturante</button>
+              <button class="chip" type="button" data-v="un massaggio rilassante">Rilassante</button>
+              <button class="chip" type="button" data-v="un massaggio sportivo">Sportivo</button>
+              <button class="chip" type="button" data-v="un massaggio prenatale">Prenatale</button>
+              <button class="chip" type="button" data-v="un massaggio di coppia">Di coppia</button>
+              <button class="chip" type="button" data-v="un trattamento viso">Viso</button>
+            </div>
+          </div>
+          <div class="field">
+            <span>Quando preferisci</span>
+            <div class="chips" data-group="quando">
+              <button class="chip is-on" type="button" data-v="">Indifferente</button>
+              <button class="chip" type="button" data-v="di mattina">Mattina</button>
+              <button class="chip" type="button" data-v="di pomeriggio">Pomeriggio</button>
+              <button class="chip" type="button" data-v="in tardo pomeriggio">Tardo pomeriggio</button>
+              <button class="chip" type="button" data-v="di sabato">Sabato</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="coNome">Il tuo nome</label>
+            <input class="input" id="coNome" type="text" placeholder="Nome" autocomplete="given-name" maxlength="40">
+          </div>
+        </div>
+        <div class="preview">
+          <small>Il tuo messaggio</small>
+          <div class="bubble" id="coMsg"></div>
+          <button class="send" id="coSend" type="button">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+            Apri in WhatsApp
+          </button>
+          <p class="note">Il sito non salva niente: il messaggio si apre su WhatsApp e lo invii tu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="map" id="dove-sono">
+    <div class="wrap">
+      <div class="map__grid">
+        <div class="map__info">
+          <h2 class="h2">Dove sono</h2>
+          <dl>
+            <div><dt>Indirizzo</dt><dd>Via Immacolata di Lourdes 29/A<br>31015 Conegliano (TV)</dd></div>
+            <div><dt>Orari</dt><dd>Su appuntamento</dd></div>
+            <div><dt>Telefono e WhatsApp</dt><dd><a href="tel:+393272677850">366 414 9205</a></dd></div>
+          </dl>
+          <div class="map__links">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Immacolata+di+Lourdes+29%2FA+31015+Conegliano+TV" target="_blank" rel="noopener">Indicazioni con Google Maps</a>
+            <a href="https://maps.apple.com/?daddr=Via+Immacolata+di+Lourdes+29%2FA,+31015+Conegliano+TV" target="_blank" rel="noopener">Apple Mappe</a>
+          </div>
+        </div>
+        <div class="map__box" id="coMapBox">
+          <div class="map__ph" id="coMapPh">
+            <svg class="lines" viewBox="0 0 600 500" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+              <path d="M-20 110 C140 150 260 70 380 130 S560 200 640 150" stroke="#E8D9E2" stroke-width="20"/>
+              <path d="M90 -20 C120 150 60 320 150 520" stroke="#E8D9E2" stroke-width="13"/>
+              <path d="M-20 360 C170 310 320 400 640 320" stroke="#E8D9E2" stroke-width="15"/>
+              <path d="M450 -20 C430 170 500 320 460 520" stroke="#E8D9E2" stroke-width="11"/>
+            </svg>
+            <svg class="map__pin" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#EE9370"/><circle cx="24" cy="24" r="17.5" fill="#C9472E"/><circle cx="24" cy="24" r="13" fill="#F4A88A"/><circle cx="24" cy="24" r="8.5" fill="#93D3B8"/></svg>
+            <button class="map__btn" id="coMapBtn" type="button">Mostra la mappa</button>
+            <p>La mappa &egrave; di Google e si carica solo se la apri.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="wrap faq__grid">
+      <div class="faq__side">
+        <h2 class="h2">Domande frequenti</h2>
+        <p class="lead">Se non trovi la risposta, scrivimi.</p>
+      </div>
+      <div>
+        <details open>
+          <summary>Come prenoto?</summary>
+          <p>Con un messaggio su WhatsApp o una telefonata al 366 414 9205. Ci accordiamo su trattamento, durata e orario.</p>
+        </details>
+        <details>
+          <summary>Posso spostare o disdire un appuntamento?</summary>
+          <p>S&igrave;, avvisami appena puoi. [Da confermare: preavviso minimo richiesto.]</p>
+        </details>
+        <details>
+          <summary>Devo portare qualcosa?</summary>
+          <p>No, in studio c'&egrave; tutto il necessario. Arriva qualche minuto prima, cos&igrave; iniziamo con calma.</p>
+        </details>
+        <details>
+          <summary>Non so quale massaggio scegliere</summary>
+          <p>Nessun problema: raccontami come stai e di cosa hai bisogno, e ti consiglio io.</p>
+        </details>
+        <details>
+          <summary>Posso regalare un trattamento?</summary>
+          <p>S&igrave;, anche come pacchetto di pi&ugrave; sedute. Scrivimi e lo prepariamo insieme.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('coCt'); if(!root) return;
+  var state={tratt:'',quando:''}, nome=document.getElementById('coNome'), out=document.getElementById('coMsg');
+  function build(){
+    var n=nome.value.trim(), q=state.quando?' '+state.quando:'';
+    var m='Ciao!'+(n?' Sono '+n+'.':'')+'\n';
+    m+= state.tratt ? 'Vorrei prenotare '+state.tratt+q+'.' : 'Vorrei prenotare un trattamento'+q+', mi consigli tu quale?';
+    return m+'\nChe disponibilità hai?';
+  }
+  function render(){ out.textContent=build(); }
+  root.querySelectorAll('.chips').forEach(function(g){
+    g.addEventListener('click',function(e){
+      var b=e.target.closest('.chip'); if(!b) return;
+      g.querySelectorAll('.chip').forEach(function(x){x.classList.remove('is-on')});
+      b.classList.add('is-on'); state[g.dataset.group]=b.dataset.v; render();
+    });
+  });
+  nome.addEventListener('input',render);
+  document.getElementById('coSend').addEventListener('click',function(){
+    window.open('https://wa.me/393272677850?text='+encodeURIComponent(build()),'_blank','noopener');
+  });
+  render();
+
+  // mappa Google caricata solo dopo il clic
+  document.getElementById('coMapBtn').addEventListener('click',function(){
+    var f=document.createElement('iframe');
+    f.src='https://www.google.com/maps?q=Via+Immacolata+di+Lourdes+29%2FA,+31015+Conegliano+TV&z=16&output=embed';
+    f.title='Mappa dello studio'; f.loading='lazy';
+    document.getElementById('coMapBox').appendChild(f);
+    document.getElementById('coMapPh').remove();
+  });
+})();
+</script>
+
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="co-f">
+  <section class="co-f__cta">
+    <div class="co-f__cta-in">
+      <div>
+        <small>Su appuntamento, a Conegliano</small>
+        <h2 class="co-f__title">Concediti un'ora<br>solo per te.</h2>
+      </div>
+      <div>
+        <p class="co-f__lead">Scrivimi su WhatsApp o chiamami: troviamo insieme il trattamento e l'orario giusti.</p>
+        <div class="co-f__actions">
+          <a class="co-f__btn co-f__btn--wa" href="https://wa.me/393272677850?text=Ciao!%20Vorrei%20prenotare%20un%20massaggio" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.4-.3Z"/></svg>
+            Prenota su WhatsApp
+          </a>
+          <a class="co-f__btn co-f__btn--tel" href="tel:+393272677850">Chiama 366 414 9205</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="co-f__main">
+    <div class="co-f__grid">
+      <div class="co-f__brand">
+        <a class="co-f__logo" href="../">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="#EE9370"/><circle cx="24" cy="24" r="17.5" fill="#C9472E"/><circle cx="24" cy="24" r="13" fill="#F4A88A"/><circle cx="24" cy="24" r="8.5" fill="#93D3B8"/></svg>
+          <span><b>Cuore Olistico</b><i>studio olistico</i></span>
+        </a>
+        <p>Studio di massaggi olistici a Conegliano. Ricevo una persona alla volta, su appuntamento.</p>
+        <div class="co-f__social">
+          <!-- inserire i link ai profili reali -->
+          <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8.5V6.8c0-.8.5-1 1-1h2V2.2L14.3 2C11.4 2 10.5 4 10.5 5.9v2.6H8V12h2.5v10H14V12h2.8l.4-3.5H14Z"/></svg></a>
+        </div>
+      </div>
+      <nav class="co-f__col" aria-label="Massaggi">
+        <h3>Massaggi</h3>
+        <ul>
+          <li><a href="../trattamenti/#decontratturante">Decontratturante</a></li>
+          <li><a href="../trattamenti/#rilassante">Rilassante</a></li>
+          <li><a href="../trattamenti/#sportivo">Sportivo olistico</a></li>
+          <li><a href="../trattamenti/#prenatale">Prenatale</a></li>
+          <li><a href="../trattamenti/#coppia-pacchetti">Di coppia</a></li>
+        </ul>
+      </nav>
+      <nav class="co-f__col" aria-label="Pagine">
+        <h3>Pagine</h3>
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../trattamenti/">Trattamenti e prezzi</a></li>
+          <li><a href="../#chi-sono">Chi sono</a></li>
+          <li><a href="../contatti/">Contatti</a></li>
+        </ul>
+      </nav>
+      <div class="co-f__col">
+        <h3>Lo studio</h3>
+        <div class="co-f__info">
+          <div><small>Indirizzo</small><a href="https://www.google.com/maps/search/?api=1&query=Via+Immacolata+di+Lourdes+29%2FA+31015+Conegliano+TV" target="_blank" rel="noopener">Via Immacolata di Lourdes 29/A<br>31015 Conegliano (TV)</a></div>
+          <div><small>Telefono e WhatsApp</small><a href="tel:+393272677850">366 414 9205</a></div>
+          <div><small>Orari</small>Su appuntamento</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="co-f__bottom">
+    <div class="co-f__bottom-in">
+      <span>&copy; <span id="coYear">2026</span> Cuore Olistico &middot; P.IVA [da inserire]</span>
+      <span class="co-f__legal">
+        <a href="../privacy-policy/">Privacy</a>
+        <a href="../cookie-policy/">Cookie</a>
+        <a href="https://zyloos.org" target="_blank" rel="noopener">Sito di Zylo OS</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HealthAndBeautyBusiness","name":"Cuore Olistico","description":"Studio di massaggi olistici a Conegliano, su appuntamento.","telephone":"+39 366 414 9205","address":{"@type":"PostalAddress","streetAddress":"Via Immacolata di Lourdes 29/A","postalCode":"31015","addressLocality":"Conegliano","addressRegion":"TV","addressCountry":"IT"},"areaServed":"Conegliano"}
+</script>
+
+<script>
+(function(){
+  var h=document.getElementById('coHeader'), b=document.getElementById('coBurger'), m=document.getElementById('coMenu'), d=document.getElementById('coDock');
+  if(h){
+    function onScroll(){ var y=window.scrollY||0; h.classList.toggle('is-scrolled',y>40); if(d) d.classList.toggle('is-visible',y>260); }
+    window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+    function setMenu(open){
+      m.classList.toggle('is-open',open); m.setAttribute('aria-hidden',!open);
+      b.classList.toggle('is-open',open); b.setAttribute('aria-expanded',open); b.setAttribute('aria-label',open?'Chiudi il menu':'Apri il menu');
+      document.body.classList.toggle('co-lock',open);
+    }
+    b.addEventListener('click',function(){ setMenu(!m.classList.contains('is-open')); });
+    m.addEventListener('click',function(e){ if(e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') setMenu(false); });
+    var p=location.pathname.replace(/\/+$/,'/');
+    document.querySelectorAll('.co-link').forEach(function(a){ var href=a.getAttribute('href'); if(href.indexOf('#')<0 && href===p) a.classList.add('is-active'); });
+  }
+  var y=document.getElementById('coYear'); if(y) y.textContent=new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
